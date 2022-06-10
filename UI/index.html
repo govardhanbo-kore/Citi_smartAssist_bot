@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=1.0">
+		<script src="libs/kore-no-conflict-start.js" type="text/javascript"></script>	
+        <title>Citi</title>
+		<link rel="icon" type="image/x-icon" href="https://www.citi.com/cbol-pre-login-static-assets/assets/favicon.ico">
+		<script src="libs/jquery.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="../UI/libs/fonts/style.css">
+        <link href="fonts/inter.css" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+        <!-- Start-->
+
+        <!-- <link href="fonts/inter.css" rel="stylesheet">	
+		<script src="libs/jquery.js" type="text/javascript"></script>
+		<script src="libs/jquery.tmpl.min.js" type="text/javascript"></script>
+		<script src="libs/jquery-ui.min.js" type="text/javascript"></script>
+		<link href="libs/jquery-ui.min.css" rel="stylesheet"></link>
+		<script src="libs/moment.js" type="text/javascript"></script>
+		<script src="../libs/ie11CustomProperties.js"></script>
+		<script src="../libs/lodash.min.js"></script>
+		<script src="../libs/d3.v4.min.js"></script>
+		<script src="../libs/KoreGraphAdapter.js" type="text/javascript"></script>
+		<script src='../libs/anonymousassertion.js'></script>
+		<script src="../kore-bot-sdk-client.js"></script>
+		<script src="../libs/perfect-scrollbar.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" href="../UI/libs/fonts/style.css"> -->
+
+<!-- End-->
+
+	<!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+    <!-- Start-->
+
+	<!-- <link rel="stylesheet" href="index.css">
+	<link href="agentdesktop.css" rel="stylesheet"></link> -->
+    <!-- End-->
+
+	<!-- <link src="test.html"></script> -->
+		<!-- Uncomment these lines for amazon polly -->
+		<!-- <script src="../plugins/aws-sdk-2.668.0.min.js"></script>
+		<script src="../plugins/kore-aws-polly.js" type="text/javascript"></script> -->
+
+
+		<!-- Uncomment these lines for AgentDestop plugin -->
+		<!-- <link href="../plugins/agentdestop/agentdesktop.css" rel="stylesheet"></link>
+		<script src="../plugins/agentdestop/libs/ac_webrtc.min.js"></script>
+		<script src="../plugins/agentdestop/libs/audio_player.js"></script>
+		<script src="../plugins/agentdestop/config.js"></script>
+		<script src="../plugins/agentdestop/libs/c2c.js"></script>
+		<script src="../plugins/agentdestop/agentdesktop.js" ></script> -->
+
+        <!-- Start-->
+
+		<!-- <script src="../libs/ac_webrtc.min.js"></script>
+		<script src="../libs/audio_player.js"></script>
+		<script src="../libs/config.js"></script>
+		<script src="../libs/c2c.js"></script>
+		<script src="../agentdesktop.js" ></script>
+
+		
+		<script src="chatWindow.js" type="text/javascript"></script>
+		<script src="libs/jquery.daterangepicker.js" type="text/javascript"></script>
+		<link href="libs/daterangepicker.css" rel="stylesheet"></link>
+		<script src="libs/jquery-clockpicker.js" type="text/javascript"></script>
+		<link href="libs/jquery-clockpicker.css" rel="stylesheet"></link>
+		<link href="../libs/kore-pickers.css" rel="stylesheet"></link>
+		<script src="../libs/kore-pickers.js" type="text/javascript"></script>
+		<script src="../libs/emoji.js" type="text/javascript"></script>
+		<script src="../libs/recorder.js" type="text/javascript"></script>
+		<script src="../libs/recorderWorker.js" type="text/javascript"></script>
+		<link href="chatWindow.css" rel="stylesheet"></link>
+		<link href="../libs/emojione.sprites.css" rel="stylesheet"></link>
+		<link href="../libs/purejscarousel.css" rel="stylesheet"></link>
+		<script src="../libs/purejscarousel.js" type="text/javascript"></script>
+		<script src="custom/customTemplate.js" type="text/javascript"></script>
+		<link href="../libs/prefect-scrollbar.css" rel="stylesheet"></link>
+		<link href="custom/customTemplate.css" rel="stylesheet"></link> -->
+
+<!-- ENd-->
+
+		<!-- <script type="text/javascript" src="libs/loader.js"></script>  -->
+		
+		<!-- Uncomment these lines for Google Speech. -->
+		<!-- <script type="text/javascript" src="../libs/speech/app.js"></script>
+		<script type="text/javascript" src="../libs/speech/key.js"></script>
+		<script type="text/javascript" src="https://apis.google.com/js/client.js"></script> -->
+		
+        <!-- Start-->
+		<!-- <script src="kore-config.js" type="text/javascript"></script> -->
+        <!-- ENd-->
+		<!-- <script src="kore-118n-config.js" type="text/javascript"></script> --> <!-- Uncomment for i18n support -->
+		<!-- Start-->
+        <!-- <script src="kore-main.js" type="text/javascript"></script>	
+		<script src="libs/kore-no-conflict-end.js" type="text/javascript"></script> -->
+        <!-- ENd-->
+        <script>
+        window.initKoreBot = function () {
+			addScript('dist/kore-ai-sdk.min.js');
+			addCss('dist/kore-ai-sdk.min.css');
+		}
+		function addScript(src) {
+			var s = document.createElement('script');
+			s.setAttribute('src', src);
+			document.body.appendChild(s);
+		}
+
+		function addCss(src) {
+			var s = document.createElement('link');
+			s.setAttribute('rel','stylesheet');
+			s.setAttribute('href', src);
+			document.body.appendChild(s);
+		}
+	</script>
+		<style>
+			.loginFormContainer {
+				/* margin-top: 20px;
+				margin-bottom: 20px;
+				padding-left: 0;
+				padding-right: 0;
+				min-width: 384px; */
+				font-family: "Interstate Regular Comp", sans-serif;
+			}
+	
+			.homepage-citi-container #logInForm {
+				border: 1px solid #dcdcdc;
+				border-radius: 16px;
+				width: 100%;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				text-align: center;
+				max-width: 40%;
+				transform: translate(-49%, -49%);
+				background-color: #fff;
+				box-shadow: 1px 1px 5px 0.05px hsl(0deg 0% 41% / 54%);
+			}
+	
+			.homepage-citi-container .citi-signon2 {
+				background-color: #fff;
+			}
+	
+			.homepage-citi-container .citi-signon2 {
+				display: block;
+				padding: 2px 16px 16px;
+				font-family: "Interstate Regular Comp", sans-serif;
+				border: 1px solid #dcdcdc;
+			}
+	
+			.homepage-citi-container .citi-signon2 {
+				border-radius: 16px;
+				text-align: center;
+				border: none;
+			}
+	
+			.loginFormContainer .loginHeader {
+				width: 100%;
+				text-align: center;
+			}
+	
+			.homepage-citi-container .citi-signon2 .input-field-title {
+				display: inline-block;
+				font-size: 16px;
+				letter-spacing: 0;
+				line-height: 18px;
+				font-weight: 500;
+			}
+	
+			.homepage-citi-container .citi-form-field-infix {
+				display: inline-block;
+			}
+	
+			.homepage-citi-container .citi-input {
+				border-color: #bbb;
+				background: #fff;
+				color: #056dae;
+			}
+	
+			.homepage-citi-container .citi-input {
+				padding: 0.6875rem 1rem;
+				border: 1px solid #bbb;
+				background: #fdfdfd;
+				font-size: 16px;
+				line-height: 1.5;
+				border-radius: 0.5rem;
+				font-weight: 400;
+				font-family: "Interstate Bold Cond";
+				height: calc(0.5em + 1.375rem + 2px);
+				outline: none;
+				width: 100%;
+			}
+	
+			.homepage-citi-container .citi-input:focus {
+				border-color: #056dae;
+				background: #eff3f8;
+			}
+	
+			.homepage-citi-container .sign-user,
+			.homepage-citi-container .sign-email {
+				padding-bottom: 15px;
+			}
+	
+			.homepage-citi-container .citi-button-primary:hover {
+				background-color: #034c81;
+				color: #fff;
+				cursor: pointer;
+			}
+	
+			.homepage-citi-container .citi-button-primary {
+				background-color: #056dae;
+				color: #fff;
+				border: none;
+				border-radius: 3px;
+				padding: 10px 57px;
+			}
+	
+			.homepage-citi-container .citi-signon2 .citi-signon-cta {
+				margin-top: 15px;
+				font-weight: 700;
+				padding: 15px 50px;
+				font-size: 12px;
+				border-radius: 8px;
+			}
+	
+			.homepage-citi-container .sign-email label {
+				margin-right: 9px;
+			}
+	
+			.no-show {
+				display: none;
+			}
+	
+			.error-msg {
+				font-size: 12px;
+				margin-top: 2px !important;
+				color: #ff001f;
+				line-height: 1.17;
+				position: absolute;
+				margin-bottom: 10px !important;
+			}
+		</style>
+	</head>
+	<body>
+		<video id="local_video" autoplay="autoplay" playsinline style="width:0px;height:0px"></video>
+        <video id="remote_video" autoplay="autoplay" playsinline style="width:0px;height:0px"></video>
+
+		<!-- Login page for citi -->
+
+		<div class="loginFormContainer no-show">
+			<div class="homepage-citi-container">
+	
+				<div id="logInForm">
+					<div class="loginHeader">
+						<img _ngcontent-ssr-c71="" src="https://www.citi.com/CBOL/IA/Angular/assets/citilogoredesign.png"
+							alt="Citi">
+					</div>
+					<div class="citi-signon2">
+						<div class="row">
+							<div class="sign-user">
+								<div class="username">
+									<div class="citi-form-field">
+										<label citilabel="" class="citi-label input-field-title" for="username">Full
+											Name</label>
+										<div
+											class="citi-form-field-infix citi-form-field-content citi-form-field-input userName">
+											<input autocomplete="off" id="username" citiinput="" type="text"
+												formcontrolname="username" class="citi-input" placeholder="Enter Full Name">
+											<div class="error-msg no-show">Please enter your Full Name</div>
+										</div>
+									</div>
+	
+	
+								</div>
+							</div>
+							<div class="sign-email">
+								<div class="email">
+									<div email="" class="citi-form-field">
+										<label citilabel="" class="citi-label input-field-title" for="email">E-Mail
+											Id</label>
+										<div
+											class="citi-form-field-infix citi-form-field-content citi-form-field-input eMail">
+											<input autocomplete="off" id="email" citiinput="" type="email"
+												formcontrolname="email" class="citi-input" placeholder="Enter E-Mail">
+											<div class="error-msg no-show">Please enter an Email ID of citi.com</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div>
+							<button class="citi-button-primary" id="loginInBtn">Sign
+								In</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <!-- Login page End Here-->
+
+		<!-- ================== citi webSite background code ================== -->
+		<div class="citiHomepageBg no-show">
+            <div _ngcontent-ssr-c168="" _nghost-ssr-c91="" class="ng-tns-c91-0">
+                <div _ngcontent-ssr-c91="" class="ng-tns-c91-0 citi-outer-container cbolui-cds">
+                    <citi-header _ngcontent-ssr-c91="" class="ng-tns-c91-0" _nghost-ssr-c70="">
+                        <div _ngcontent-ssr-c70="" class="header">
+                            <div _ngcontent-ssr-c70="" class="primary-header">
+                                <citi-banner2 _ngcontent-ssr-c70="" _nghost-ssr-c71="">
+                                    <div _ngcontent-ssr-c71="" role="banner" class="banner ng-star-inserted">
+                                        <div _ngcontent-ssr-c71="" class="content-wrap">
+                                            <div _ngcontent-ssr-c71="" class="journeyLogo">
+                                                <div _ngcontent-ssr-c71="" class="logoDiv default ng-star-inserted"><a
+                                                        _ngcontent-ssr-c71="" id="sessionFocusUrl" tabindex="-1"
+                                                        href="/" class="ng-star-inserted">
+
+                                                        <img _ngcontent-ssr-c71=""
+                                                            src="https://www.citi.com/CBOL/IA/Angular/assets/citilogoredesign.png"
+                                                            alt="Citi" class="ng-star-inserted">
+
+                                                    </a>
+
+
+                                                </div>
+
+
+
+                                            </div>
+                                            <div _ngcontent-ssr-c71="" class="buttons ng-star-inserted">
+                                                <div _ngcontent-ssr-c71="" class="navButton ng-star-inserted"
+                                                    id="butlerATM">
+                                                    <a _ngcontent-ssr-c71="" id="atmLink" tabindex="-1"
+                                                        href="/citibank-location-finder" class="ng-star-inserted"><img
+                                                            _ngcontent-ssr-c71="" alt=""
+                                                            src="https://www.citi.com/CBOL/IA/Angular/assets/050-location2x.svg"><span
+                                                            _ngcontent-ssr-c71="">ATM / BRANCH</span></a>
+                                                </div>
+                                                <div _ngcontent-ssr-c71="" class="navButton ng-star-inserted" id="lang">
+                                                    <button _ngcontent-ssr-c71="" id="langBtn"
+                                                        class="ng-star-inserted"><img _ngcontent-ssr-c71=""
+                                                            role="presentation" alt=""
+                                                            src="https://www.citi.com/CBOL/IA/Angular/assets/icon_globe_med-grey2x.svg"><span
+                                                            _ngcontent-ssr-c71="">ESPAÑOL</span></button>
+                                                </div>
+
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </citi-banner2>
+                                <citi-navigation3 _ngcontent-ssr-c70="" class="citi-navigation" _nghost-ssr-c83="">
+                                    <div _ngcontent-ssr-c83="" role="navigation" aria-label="Main"
+                                        class="navigationParent preLogin ng-star-inserted"
+                                        style="background-color: rgb(0, 45, 114);">
+                                        <ul _ngcontent-ssr-c83="" id="nav-bar-main-ul" class="nav-bar-main-ul"
+                                            style="display: flex; position: static; box-shadow: none;">
+                                            <li _ngcontent-ssr-c83="" role="listitem"
+                                                class="mainListItems ng-star-inserted" id="navcreditCardMainLI">
+
+
+                                                <a href="#" onclick="window.open('./External_Page_1.html','_blank'); return false"   _ngcontent-ssr-c83="" tabindex="-1"
+                                                    class="main-links plusIcon ng-star-inserted"
+                                                    id="navcreditCardmainAnchor0" role="button" aria-expanded="false"
+                                                    style="background-color: rgb(0, 45, 114);">Credit Cards</a>
+                                            </li>
+
+
+                                            <li _ngcontent-ssr-c83="" role="listitem"
+                                                class="mainListItems ng-star-inserted" id="navbankingMainLI">
+
+
+                                                <a href="#" onclick="window.open('./External_Page_2.html','_blank'); return false" _ngcontent-ssr-c83="" tabindex="-1"
+                                                    class="main-links plusIcon ng-star-inserted"
+                                                    id="navbankingmainAnchor1" role="button" aria-expanded="false"
+                                                    style="background-color: rgb(0, 45, 114);">Banking</a>
+                                            </li>
+
+
+                                            <li _ngcontent-ssr-c83="" role="listitem"
+                                                class="mainListItems ng-star-inserted" id="navlendingMainLI">
+
+
+                                                <a _ngcontent-ssr-c83="" tabindex="-1"
+                                                    class="main-links plusIcon ng-star-inserted"
+                                                    id="navlendingmainAnchor2" role="button" aria-expanded="false"
+                                                    style="background-color: rgb(0, 45, 114);">Lending</a>
+                                            </li>
+
+
+                                            <li _ngcontent-ssr-c83="" role="listitem"
+                                                class="mainListItems ng-star-inserted" id="investingMainLI">
+
+
+                                                <a _ngcontent-ssr-c83="" tabindex="-1"
+                                                    class="main-links plusIcon ng-star-inserted"
+                                                    id="investingmainAnchor3" role="button" aria-expanded="false"
+                                                    style="background-color: rgb(0, 45, 114);">Investing</a>
+                                            </li>
+
+
+                                            <li _ngcontent-ssr-c83="" role="listitem"
+                                                class="mainListItems ng-star-inserted" id="wealthMgmntMainLI">
+
+
+                                                <a _ngcontent-ssr-c83="" tabindex="-1"
+                                                    class="main-links plusIcon ng-star-inserted"
+                                                    id="wealthMgmntmainAnchor4" role="button" aria-expanded="false"
+                                                    style="background-color: rgb(0, 45, 114);">Wealth Management</a>
+                                            </li>
+
+                                            <li _ngcontent-ssr-c83="" role="listitem"
+                                                class="mainListItems ng-star-inserted" id="navOpenAccMainLI">
+
+
+
+                                                <a _ngcontent-ssr-c83="" tabindex="-1"
+                                                    class="main-links plusIcon ng-star-inserted"
+                                                    id="navOpenAccmainAnchor8"
+                                                    href="https://online.citi.com/US/ag/open-a-bank-account"
+                                                    style="background-color: rgb(0, 45, 114);">Open an Account</a>
+
+                                            </li>
+
+                                            <li _ngcontent-ssr-c83="" id="searchLi"
+                                                class="mainListItems ng-star-inserted moveLi"
+                                                style="background-color: rgb(0, 45, 114);">
+                                                <citi-cta _ngcontent-ssr-c83="" type="tertiary"
+                                                    idstr="personetics-citi-menu" tabindex="-1" _nghost-ssr-c36=""
+                                                    class="en_US showEnglishBg"
+                                                    style="background-color: rgb(0, 45, 114);"><button
+                                                        _ngcontent-ssr-c36="" type="button" id="personetics-citi-menu"
+                                                        class="btn btn-link ng-star-inserted"
+                                                        style="text-align: center; outline: none;">How can we
+                                                        help?</button>
+                                                    <!---->
+                                                    <!---->
+                                                    <!---->
+                                                    <!---->
+                                                </citi-cta><span _ngcontent-ssr-c83="" id="Howline"></span>
+                                            </li>
+
+                                        </ul>
+
+                                    </div>
+                                </citi-navigation3>
+                            </div>
+                        </div>
+                    </citi-header>
+                    <div _ngcontent-ssr-c91="" id="maincontent" class="ng-tns-c91-0">
+                        <div _ngcontent-ssr-c91="" class="ng-tns-c91-0">
+
+                            <div _ngcontent-ssr-c91=""
+                                class="ng-tns-c91-0 citi-container cbolui-ddl theme-light fullbleedFix">
+
+                                <div _ngcontent-ssr-c91="" class="appbody ng-tns-c91-0 ng-star-inserted">
+                                    <router-outlet _ngcontent-ssr-c168="" class="ng-tns-c91-0"></router-outlet>
+                                    <app-landingpage _nghost-ssr-c166="" class="ng-tns-c91-0 ng-star-inserted">
+                                        <div _ngcontent-ssr-c166="" role="main">
+                                            <citi-simple-layout _ngcontent-ssr-c166="" pageid="ag_homePage">
+                                                <div _ngcontent-ssr-c166="" class="homepage-reskin-container">
+                                                    <div _ngcontent-ssr-c166="" id="clearUserIdAlert"
+                                                        class="container-fluid" style="display: none;">
+                                                    </div>
+
+
+                                                    <div _ngcontent-ssr-c166="" class="alertContainer ng-star-inserted">
+                                                        <div _ngcontent-ssr-c166=""
+                                                            class="container-fluid alertSection">
+                                                            <citi-alerts _ngcontent-ssr-c166="" _nghost-ssr-c159=""
+                                                                class="ng-star-inserted">
+                                                                <div _ngcontent-ssr-c159=""
+                                                                    class="citiAlerts ng-star-inserted">
+                                                                    <cds-banner-alert _ngcontent-ssr-c159=""
+                                                                        role="alert" banneralerttype="marketing"
+                                                                        banneralertbgcolor="#fff"
+                                                                        announceclosemessage="Banner Alert Closed"
+                                                                        class="cds-banner-alert marketingAlert"
+                                                                        _nghost-ssr-c99="" id="outage-banner-alert-1"
+                                                                        style="background-color: rgb(255, 255, 255); display: block;">
+                                                                        <div _ngcontent-ssr-c159=""
+                                                                            class="contentParentWrap">
+                                                                            <div _ngcontent-ssr-c159=""
+                                                                                class="contentWrap"><span
+                                                                                    _ngcontent-ssr-c159=""
+                                                                                    class="ada-hidden">Alert
+                                                                                    section</span>
+                                                                                <cds-icon _ngcontent-ssr-c159=""
+                                                                                    arialabel="icon"
+                                                                                    alttext="Alert Section" shade="dark"
+                                                                                    name="12-info" size="medium"
+                                                                                    class="reskin-cds-icon"
+                                                                                    _nghost-ssr-c92="">
+                                                                                    <div _ngcontent-ssr-c92=""
+                                                                                        role="img" id=""
+                                                                                        alt="Alert Section"
+                                                                                        aria-label="icon"
+                                                                                        class="sfi b1-12-info-hover medium-circle"style="background-image: url('data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3Cpath d='M12 1C5.925 1 1 5.926 1 12c0 6.075 4.925 11 11 11s11-4.925 11-11c0-6.074-4.925-11-11-11m0 18.149a1 1 0 0 1-1-1v-8a1 1 0 1 1 2 0v8a1 1 0 0 1-1 1m1-13a1 1 0 1 1-2 0 1 1 0 0 1 2 0' id='a'/%3E%3C/defs%3E%3Cg transform='translate(.2 .2)' fill='none' fill-rule='evenodd'%3E%3Cmask id='b' fill='%23002a54'%3E%3Cuse xlink:href='%23a'/%3E%3C/mask%3E%3Cuse fill='%23000' xlink:href='%23a'/%3E%3Cg mask='url(%23b)' fill='%23002a54'%3E%3Cpath d='M0 0h24v24H0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A');">
+                                                                                        
+                                                                                    </div>
+                                                                                </cds-icon>
+                                                                                <p _ngcontent-ssr-c159=""
+                                                                                    class="content reskin-alert-message">
+                                                                                    Elimination of overdraft fees: Get
+                                                                                    the latest details on Citi’s
+                                                                                    decision to eliminate consumer
+                                                                                    overdraft and returned item fees. <a
+                                                                                        href="https://online.citi.com/JRS/portal/template.do?ID=Citi-Overdraft-Fees-Change">Learn
+                                                                                        More</a></p>
+                                                                            </div>
+                                                                            <div _ngcontent-ssr-c159=""
+                                                                                class="closeBtnWrap"><button
+                                                                                    _ngcontent-ssr-c159="" type="button"
+                                                                                    aria-label="Close"
+                                                                                    class="cds-close"></button></div>
+                                                                        </div>
+                                                                    </cds-banner-alert>
+                                                                </div>
+
+                                                            </citi-alerts>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <app-hero-reskin _ngcontent-ssr-c166="" _nghost-ssr-c155="">
+                                                        <div _ngcontent-ssr-c155="" class="heroReskinSection"
+                                                            style="background-image: url('https://online.citi.com/JRS/banners/hero_background/Citi-futuristic-angles-bg-compressed.jpg');">
+                                                                    <div _ngcontent-ssr-c155=""
+                                                                        class="col-xs-12 col-sm-6 col-md-4 column-one">
+                                                                        <div _ngcontent-ssr-c155=""
+                                                                            class="subHeading-title ng-star-inserted">
+                                                                            CITI REWARDS+<sup>®</sup> CARD</div>
+
+                                                                        <div _ngcontent-ssr-c155=""
+                                                                            id="prstars-container"
+                                                                            class="ng-star-inserted"></div>
+                                                                        <p _ngcontent-ssr-c155=""
+                                                                            class="heading-title ng-star-inserted">Earn
+                                                                            20,000 bonus points</p>
+
+                                                                        <p _ngcontent-ssr-c155=""
+                                                                            class="introText ng-star-inserted">after
+                                                                            qualifying purchases plus our low intro APR
+                                                                            for over one year.</p><button
+                                                                            _ngcontent-ssr-c155="" cdscta="primary"
+                                                                            customertype="priority" size="large"
+                                                                            class="cds-cta CITI_RewardsPlus_18 cds-cta-lg cds-cta-primary cds-cta-priority ng-star-inserted"
+                                                                            aria-label="Learn More about CITI REWARDS+ CARD">Learn
+                                                                            More <span _ngcontent-ssr-c155=""
+                                                                                class="ada-hidden">after qualifying
+                                                                                purchases plus our low intro APR for
+                                                                                over one year. </span></button>
+
+
+                                                                    </div>
+                                                                    <div _ngcontent-ssr-c155=""
+                                                                        class="col-xs-12 col-sm-6 col-md-5 column-two cardArtImage">
+                                                                        <div _ngcontent-ssr-c155=""
+                                                                            class="hideCardartOnMobile ng-star-inserted">
+                                                                            <a _ngcontent-ssr-c155=""
+                                                                                href="https://www.citi.com/credit-cards/citi-rewards-plus-credit-card?afc=106"><img
+                                                                                    _ngcontent-ssr-c155=""
+                                                                                    class="product-image CITI_RewardsPlus_18"
+                                                                                    src="https://online.citi.com/JRS/banners/homepage2/HP_1615_Updated_RewardsPlus_hero.png"
+                                                                                    alt="Earn 20,000 bonus points"></a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div _ngcontent-ssr-c155=""
+                                                                        class="col-xs-12 col-sm-6 col-md-5 column-two cardArtImage">
+                                                                        <div _ngcontent-ssr-c155=""
+                                                                            class="hideCardartOnMobile ng-star-inserted">
+                                                                            <a _ngcontent-ssr-c155=""
+                                                                            href="https://www.citi.com/credit-cards/compare/view-all-credit-cards?afc=105&intc=1~1~52~6~BANR~1~mpc_Default_citicomREDPE_aug2016~OMPC105"><img
+                                                                                    _ngcontent-ssr-c155=""
+                                                                                    class="product-image CITI_RewardsPlus_18"
+                                                                                    src="https://online.citi.com/JRS/banners/homepage2/Hero_Credit_Cards_Offer.png"
+                                                                                    alt="Earn 20,000 bonus points"></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </app-hero-reskin>
+                                                    <app-lob-menu _ngcontent-ssr-c166="" _nghost-ssr-c164=""
+                                                        class="ng-star-inserted">
+                                                    </app-lob-menu>
+
+                                                    <app-three-up-reskin _ngcontent-ssr-c166="" _nghost-ssr-c165=""
+                                                        class="ng-star-inserted">
+                                                        <div _ngcontent-ssr-c165="" class="threeUp threeUpContainer">
+                                                            <app-showcase _ngcontent-ssr-c165="" type="g-1-0"
+                                                                headertext="" _nghost-ssr-c150="">
+                                                                <section _ngcontent-ssr-c150=""
+                                                                    class="showcase ng-star-inserted">
+                                                                    <div _ngcontent-ssr-c150="" class="container-fluid">
+                                                                        <div _ngcontent-ssr-c150="" class="text-center">
+                                                                            <app-text-header _ngcontent-ssr-c150=""
+                                                                                _nghost-ssr-c148="">
+                                                                                <section _ngcontent-ssr-c148=""
+                                                                                    class="ng-star-inserted">
+                                                                                </section>
+
+                                                                            </app-text-header>
+                                                                        </div>
+                                                                        <div _ngcontent-ssr-c150="" class="row">
+
+                                                                            <div _ngcontent-ssr-c165=""
+                                                                                class="row ng-star-inserted">
+                                                                                <div _ngcontent-ssr-c165=""
+                                                                                    class="col-xs-12 col-sm-4 offer-content ng-star-inserted"
+                                                                                    id="Generic_Save"
+                                                                                    data-id="Generic_Save">
+                                                                                    <div _ngcontent-ssr-c165=""
+                                                                                        class="headers" id="header0"
+                                                                                        style="height: 19px;">
+                                                                                        <h2 _ngcontent-ssr-c165=""
+                                                                                            aria-level="3"
+                                                                                            class="header-3 normal-case hpHeader"
+                                                                                            id="h0"><strong
+                                                                                                _ngcontent-ssr-c165=""><a
+                                                                                                    _ngcontent-ssr-c165=""
+                                                                                                    target="_blank"
+                                                                                                    class="hoverHeader Generic_Save"
+                                                                                                    href="https://online.citi.com/US/banking/savings/citi.action?ID=citi-savings&amp;intc=1~1~52~6~BANR~2~Generic_Save~XPX">Simplify
+                                                                                                    Your
+                                                                                                    Savings</a></strong>
+                                                                                        </h2>
+                                                                                    </div>
+                                                                                    <div _ngcontent-ssr-c165=""
+                                                                                        class="three-up-body-container">
+                                                                                        <a _ngcontent-ssr-c165=""
+                                                                                            href="https://online.citi.com/US/banking/savings/citi.action?ID=citi-savings&amp;intc=1~1~52~6~BANR~2~Generic_Save~XPX"
+                                                                                            class="Generic_Save"><img
+                                                                                                _ngcontent-ssr-c165=""
+                                                                                                class="hpImage Generic_Save lazyloaded"
+                                                                                                alt="Simplify<br/>Your Savings"
+                                                                                                data-expand="10"
+                                                                                                data-src="https://online.citi.com/JRS/banners/modules/HP417_M.jpg"
+                                                                                                src="https://online.citi.com/JRS/banners/modules/HP417_M.jpg"></a>
+                                                                                        <div _ngcontent-ssr-c165=""
+                                                                                            id="d0"
+                                                                                            style="height: auto;">
+                                                                                            <p _ngcontent-ssr-c165=""
+                                                                                                class="hpDescription m-bottom-0 p-top-10">
+                                                                                                <span
+                                                                                                    _ngcontent-ssr-c165=""
+                                                                                                    class="d-block"
+                                                                                                    id="p0"
+                                                                                                    style="height: 72px;">Easy
+                                                                                                    to access and simple
+                                                                                                    to manage, a Citi
+                                                                                                    Savings Account
+                                                                                                    could be right for
+                                                                                                    you.</span><button
+                                                                                                    _ngcontent-ssr-c165=""
+                                                                                                    cdscta="primary"
+                                                                                                    customertype="priority"
+                                                                                                    size="large"
+                                                                                                    class="cds-cta btn-threeup cta-desktop Generic_Save cds-cta-lg cds-cta-primary cds-cta-priority"
+                                                                                                    aria-label="Learn More about Simplify Your Savings">Learn
+                                                                                                    More<span
+                                                                                                        _ngcontent-ssr-c165=""
+                                                                                                        class="ada-hidden">
+                                                                                                        Simplify Your
+                                                                                                        Savings</span></button><button
+                                                                                                    _ngcontent-ssr-c165=""
+                                                                                                    cdscta="primary"
+                                                                                                    customertype="priority"
+                                                                                                    class="cds-cta btn-threeup cta-responsive Generic_Save cds-cta-md cds-cta-primary cds-cta-priority"
+                                                                                                    aria-label="Learn More about Simplify Your Savings">Learn
+                                                                                                    More<span
+                                                                                                        _ngcontent-ssr-c165=""
+                                                                                                        class="ada-hidden">
+                                                                                                        Simplify Your
+                                                                                                        Savings</span></button>
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div _ngcontent-ssr-c165=""
+                                                                                    class="col-xs-12 col-sm-4 offer-content ng-star-inserted"
+                                                                                    id="LifeMoneyBlue"
+                                                                                    data-id="LifeMoneyBlue">
+                                                                                    <div _ngcontent-ssr-c165=""
+                                                                                        class="headers" id="header1"
+                                                                                        style="height: 19px;">
+                                                                                        <h2 _ngcontent-ssr-c165=""
+                                                                                            aria-level="3"
+                                                                                            class="header-3 normal-case hpHeader"
+                                                                                            id="h1"><strong
+                                                                                                _ngcontent-ssr-c165=""><a
+                                                                                                    _ngcontent-ssr-c165=""
+                                                                                                    target="_blank"
+                                                                                                    class="hoverHeader LifeMoneyBlue"
+                                                                                                    href="https://www.lifeandmoney.citi.com?intc=1~1~52~6~BANR~2~LifeMoneyBlue~XPX">Life
+                                                                                                    and Money by
+                                                                                                    Citi<sup>®</sup></a></strong>
+                                                                                        </h2>
+                                                                                    </div>
+                                                                                    <div _ngcontent-ssr-c165=""
+                                                                                        class="three-up-body-container">
+                                                                                        <a _ngcontent-ssr-c165=""
+                                                                                            href="https://www.lifeandmoney.citi.com?intc=1~1~52~6~BANR~2~LifeMoneyBlue~XPX"
+                                                                                            class="LifeMoneyBlue"><img
+                                                                                                _ngcontent-ssr-c165=""
+                                                                                                class="hpImage LifeMoneyBlue lazyloaded"
+                                                                                                alt="Tips for All of Life's Moments"
+                                                                                                data-expand="10"
+                                                                                                data-src="https://online.citi.com/JRS/banners/modules/HP2943_M.jpg"
+                                                                                                src="https://online.citi.com/JRS/banners/modules/HP2943_M.jpg"></a>
+                                                                                        <div _ngcontent-ssr-c165=""
+                                                                                            id="d1"
+                                                                                            style="height: auto;">
+                                                                                            <p _ngcontent-ssr-c165=""
+                                                                                                class="hpDescription m-bottom-0 p-top-10">
+                                                                                                <span
+                                                                                                    _ngcontent-ssr-c165=""
+                                                                                                    class="d-block"
+                                                                                                    id="p1"
+                                                                                                    style="height: 72px;">Make
+                                                                                                    the most of your
+                                                                                                    time and money, from
+                                                                                                    planning your next
+                                                                                                    getaway to buying a
+                                                                                                    home.</span><button
+                                                                                                    _ngcontent-ssr-c165=""
+                                                                                                    cdscta="primary"
+                                                                                                    customertype="priority"
+                                                                                                    size="large"
+                                                                                                    class="cds-cta btn-threeup cta-desktop LifeMoneyBlue cds-cta-lg cds-cta-primary cds-cta-priority"
+                                                                                                    aria-label="Learn More about Life and Money by Citi">Learn
+                                                                                                    More<span
+                                                                                                        _ngcontent-ssr-c165=""
+                                                                                                        class="ada-hidden">
+                                                                                                        Life and Money
+                                                                                                        by
+                                                                                                        Citi&lt;sup&gt;&amp;reg;&lt;/sup&gt;</span></button><button
+                                                                                                    _ngcontent-ssr-c165=""
+                                                                                                    cdscta="primary"
+                                                                                                    customertype="priority"
+                                                                                                    class="cds-cta btn-threeup cta-responsive LifeMoneyBlue cds-cta-md cds-cta-primary cds-cta-priority"
+                                                                                                    aria-label="Learn More about Life and Money by Citi">Learn
+                                                                                                    More<span
+                                                                                                        _ngcontent-ssr-c165=""
+                                                                                                        class="ada-hidden">
+                                                                                                        Life and Money
+                                                                                                        by
+                                                                                                        Citi&lt;sup&gt;&amp;reg;&lt;/sup&gt;</span></button>
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div _ngcontent-ssr-c165=""
+                                                                                    class="col-xs-12 col-sm-4 offer-content ng-star-inserted"
+                                                                                    id="mpc_citicom_may2016"
+                                                                                    data-id="mpc_citicom_may2016">
+                                                                                    <div _ngcontent-ssr-c165=""
+                                                                                        class="headers" id="header2"
+                                                                                        style="height: 19px;">
+                                                                                        <h2 _ngcontent-ssr-c165=""
+                                                                                            aria-level="3"
+                                                                                            class="header-3 normal-case hpHeader"
+                                                                                            id="h2"
+                                                                                            style="height: auto;">
+                                                                                            <strong
+                                                                                                _ngcontent-ssr-c165=""><a
+                                                                                                    _ngcontent-ssr-c165=""
+                                                                                                    target="_blank"
+                                                                                                    class="hoverHeader mpc_citicom_may2016"
+                                                                                                    href="https://www.citi.com/credit-cards/compare/view-all-credit-cards?afc=105&amp;intc=1~1~52~6~BANR~1~mpc_Default_citicomREDPE_aug2016~OMPC105">Choose
+                                                                                                    the Right
+                                                                                                    Citi<sup>®</sup>
+                                                                                                    Credit Card for
+                                                                                                    You</a></strong>
+                                                                                        </h2>
+                                                                                    </div>
+                                                                                    <div _ngcontent-ssr-c165=""
+                                                                                        class="three-up-body-container">
+                                                                                        <a _ngcontent-ssr-c165=""
+                                                                                            href="https://www.citi.com/credit-cards/compare/view-all-credit-cards?afc=105&amp;intc=1~1~52~6~BANR~1~mpc_Default_citicomREDPE_aug2016~OMPC105"
+                                                                                            class="mpc_citicom_may2016"><img
+                                                                                                _ngcontent-ssr-c165=""
+                                                                                                class="hpImage mpc_citicom_may2016 lazyloaded"
+                                                                                                alt="Choose the right Citi<sup>&amp;reg;</sup> credit card for you"
+                                                                                                data-expand="10"
+                                                                                                data-src="https://online.citi.com/JRS/banners/modules/Cards-tile-grey-1120.jpg"
+                                                                                                src="https://online.citi.com/JRS/banners/modules/Cards-tile-grey-1120.jpg"></a>
+                                                                                        <div _ngcontent-ssr-c165=""
+                                                                                            id="d2"
+                                                                                            style="height: auto;">
+                                                                                            <p _ngcontent-ssr-c165=""
+                                                                                                class="hpDescription m-bottom-0 p-top-10">
+                                                                                                <span
+                                                                                                    _ngcontent-ssr-c165=""
+                                                                                                    class="d-block"
+                                                                                                    id="p2"
+                                                                                                    style="height: 72px;">Whether
+                                                                                                    you want Cash Back,
+                                                                                                    Great Airline Miles,
+                                                                                                    Rewards for Costco
+                                                                                                    Members, or a Low
+                                                                                                    Intro Rate, the
+                                                                                                    choice is all
+                                                                                                    yours.</span><button
+                                                                                                    _ngcontent-ssr-c165=""
+                                                                                                    cdscta="primary"
+                                                                                                    customertype="priority"
+                                                                                                    size="large"
+                                                                                                    class="cds-cta btn-threeup cta-desktop mpc_citicom_may2016 cds-cta-lg cds-cta-primary cds-cta-priority"
+                                                                                                    aria-label="Learn More about Choose the Right Citi Credit Card for You">Learn
+                                                                                                    More<span
+                                                                                                        _ngcontent-ssr-c165=""
+                                                                                                        class="ada-hidden">
+                                                                                                        Choose the Right
+                                                                                                        Citi&lt;sup&gt;&amp;reg;&lt;/sup&gt;
+                                                                                                        Credit Card for
+                                                                                                        You</span></button><button
+                                                                                                    _ngcontent-ssr-c165=""
+                                                                                                    cdscta="primary"
+                                                                                                    customertype="priority"
+                                                                                                    class="cds-cta btn-threeup cta-responsive mpc_citicom_may2016 cds-cta-md cds-cta-primary cds-cta-priority"
+                                                                                                    aria-label="Learn More about Choose the Right Citi Credit Card for You">Learn
+                                                                                                    More<span
+                                                                                                        _ngcontent-ssr-c165=""
+                                                                                                        class="ada-hidden">
+                                                                                                        Choose the Right
+                                                                                                        Citi&lt;sup&gt;&amp;reg;&lt;/sup&gt;
+                                                                                                        Credit Card for
+                                                                                                        You</span></button>
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+
+                                                                        </div>
+                                                                        <footer _ngcontent-ssr-c150=""
+                                                                            class="text-center"></footer>
+                                                                    </div>
+                                                                </section>
+
+
+                                                            </app-showcase>
+                                                        </div>
+                                                    </app-three-up-reskin>
+                                                    <img _ngcontent-ssr-c166="" role="presentation" aria-hidden="true"
+                                                        src="https://www.citi.com/cbol-pre-login-static-assets/assets/Wave_Top.svg"
+                                                        class="waveTop ng-star-inserted">
+
+                                                    <app-module-seven-reskin _ngcontent-ssr-c166="" _nghost-ssr-c156="">
+                                                        <div _ngcontent-ssr-c156="" class="mod-seven offer-content"
+                                                            id="Save_Hub2" data-id="Save_Hub2">
+                                                            <div _ngcontent-ssr-c156="" id="modSevenContainer"
+                                                                class="container"
+                                                                style="padding-left: 0px; padding-right: 0px;">
+
+                                                                <app-showcase _ngcontent-ssr-c156="" type="g-3-1"
+                                                                    imageside="left" class="mod-seven ng-star-inserted"
+                                                                    _nghost-ssr-c150="">
+
+                                                                    <section _ngcontent-ssr-c150=""
+                                                                        class="showcase ng-star-inserted">
+                                                                        <div _ngcontent-ssr-c150=""
+                                                                            class="container-fluid showcase-3">
+                                                                            <div _ngcontent-ssr-c150="" class="row">
+                                                                                <div _ngcontent-ssr-c150=""
+                                                                                    class="g-3-container">
+                                                                                    <div _ngcontent-ssr-c150=""
+                                                                                        class="col-sm-6 image-container">
+                                                                                        <a _ngcontent-ssr-c150=""
+                                                                                            href="https://online.citi.com/US/JRS/portal/template.do?ID=compare-savings-checking-cds-and-money-market-accounts&amp;intc=1~1~52~6~BANR~2~Save_Hub2~HP"
+                                                                                            target=""
+                                                                                            class="Save_Hub2 ng-star-inserted"><img
+                                                                                                _ngcontent-ssr-c150=""
+                                                                                                class="img-responsive Save_Hub2 lazyload ng-star-inserted"
+                                                                                                alt="How to Choose the Right Bank Account"
+                                                                                                data-expand="10"
+                                                                                                data-src="https://online.citi.com/JRS/banners/modules/HP5904_M.jpg"
+                                                                                                src="https://online.citi.com/JRS/banners/modules/HP5904_M.jpg">
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div _ngcontent-ssr-c150=""
+                                                                                        class="col-sm-6 col-sm-push-6 module-content">
+                                                                                        <app-text-header
+                                                                                            _ngcontent-ssr-c150=""
+                                                                                            _nghost-ssr-c148="">
+                                                                                            <section
+                                                                                                _ngcontent-ssr-c148=""
+                                                                                                class="ng-star-inserted">
+                                                                                                <p _ngcontent-ssr-c148=""
+                                                                                                    class="eyebrow-text ng-star-inserted">
+                                                                                                    YOUR SAVINGS MADE
+                                                                                                    SIMPLE</p>
+
+                                                                                                <h2 _ngcontent-ssr-c148=""
+                                                                                                    class="bold header-level-2 ng-star-inserted">
+                                                                                                    How to Choose the
+                                                                                                    Right Bank Account
+                                                                                                </h2>
+
+                                                                                            </section>
+
+                                                                                        </app-text-header>
+                                                                                        <p _ngcontent-ssr-c150=""></p>
+                                                                                        <div _ngcontent-ssr-c150="">
+                                                                                            <p _ngcontent-ssr-c156=""
+                                                                                                content-3-1=""
+                                                                                                class="m-bottom-0 ng-star-inserted">
+                                                                                                <span
+                                                                                                    _ngcontent-ssr-c156=""
+                                                                                                    class="m-bottom-30 d-block">Here's
+                                                                                                    a simple guide to
+                                                                                                    the main types of
+                                                                                                    accounts you can
+                                                                                                    open at a
+                                                                                                    bank.</span>
+                                                                                            <div _ngcontent-ssr-c156=""
+                                                                                                content-3-1=""
+                                                                                                class="ng-star-inserted">
+                                                                                                <div _ngcontent-ssr-c156=""
+                                                                                                    content-3-1=""
+                                                                                                    class="ng-star-inserted">
+                                                                                                    <button
+                                                                                                        _ngcontent-ssr-c156=""
+                                                                                                        cdscta="primary"
+                                                                                                        content-3-1=""
+                                                                                                        customertype="priority"
+                                                                                                        size="large"
+                                                                                                        class="cds-cta Save_Hub2 cds-cta-lg cds-cta-primary cds-cta-priority"
+                                                                                                        aria-label="Read More about YOUR SAVINGS MADE SIMPLE">Read
+                                                                                                        More<span
+                                                                                                            _ngcontent-ssr-c156=""
+                                                                                                            class="ada-hidden">
+                                                                                                            Here's a
+                                                                                                            simple guide
+                                                                                                            to the main
+                                                                                                            types of
+                                                                                                            accounts you
+                                                                                                            can open at
+                                                                                                            a
+                                                                                                            bank.</span></button>
+                                                                                                </div>
+
+                                                                                            </div>
+
+
+                                                                                            </p>
+
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </section>
+
+                                                                </app-showcase>
+
+                                                            </div>
+                                                        </div>
+                                                    </app-module-seven-reskin>
+                                                    <app-module-one-reskin _ngcontent-ssr-c166="" _nghost-ssr-c157="">
+                                                        <div _ngcontent-ssr-c157="" class="mod-one offer-content"
+                                                            id="CARDS_BLUE_Scams_HP21" data-id="CARDS_BLUE_Scams_HP21">
+                                                            <div _ngcontent-ssr-c157="" id="modOneContainer"
+                                                                class="container"
+                                                                style="padding-left: 0px; padding-right: 0px;">
+
+                                                                <app-showcase _ngcontent-ssr-c157="" type="g-3-0"
+                                                                    imageside="right" _nghost-ssr-c150=""
+                                                                    class="ng-star-inserted">
+
+                                                                    <section _ngcontent-ssr-c150=""
+                                                                        class="showcase ng-star-inserted">
+                                                                        <div _ngcontent-ssr-c150=""
+                                                                            class="container-fluid showcase-3">
+                                                                            <div _ngcontent-ssr-c150="" class="row">
+                                                                                <div _ngcontent-ssr-c150=""
+                                                                                    class="g-3-container">
+                                                                                    <div _ngcontent-ssr-c150=""
+                                                                                        class="col-sm-6 col-sm-push-6 image-container">
+                                                                                        <a _ngcontent-ssr-c150=""
+                                                                                            href="https://www.lifeandmoney.citi.com/Money/Finance101/2021-Scams-to-Watch-For"
+                                                                                            target="_blank"
+                                                                                            class="CARDS_BLUE_Scams_HP21 ng-star-inserted"><img
+                                                                                                _ngcontent-ssr-c150=""
+                                                                                                class="img-responsive CARDS_BLUE_Scams_HP21 lazyload ng-star-inserted"
+                                                                                                alt="Scams Are on the Rise in 2021, Here's What to Watch Out For"
+                                                                                                data-expand="10"
+                                                                                                data-src="https://online.citi.com/JRS/banners/modules/HP_1069_fraud_Module.jpg"
+                                                                                                src="https://online.citi.com/JRS/banners/modules/HP_1069_fraud_Module.jpg">
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div _ngcontent-ssr-c150=""
+                                                                                        class="col-sm-6 col-sm-push-6 module-content">
+                                                                                        <app-text-header
+                                                                                            _ngcontent-ssr-c150=""
+                                                                                            _nghost-ssr-c148="">
+                                                                                            <section
+                                                                                                _ngcontent-ssr-c148=""
+                                                                                                class="ng-star-inserted">
+                                                                                                <p _ngcontent-ssr-c148=""
+                                                                                                    class="eyebrow-text ng-star-inserted">
+                                                                                                    LIFE AND MONEY BY
+                                                                                                    CITI</p>
+
+                                                                                                <h2 _ngcontent-ssr-c148=""
+                                                                                                    class="bold header-level-2 ng-star-inserted">
+                                                                                                    Scams Are on the
+                                                                                                    Rise in 2021, Here's
+                                                                                                    What to Watch Out
+                                                                                                    For</h2>
+
+                                                                                            </section>
+
+                                                                                        </app-text-header>
+                                                                                        <p _ngcontent-ssr-c150=""></p>
+                                                                                        <div _ngcontent-ssr-c150="">
+                                                                                            <p _ngcontent-ssr-c157=""
+                                                                                                content-3-0=""
+                                                                                                class="m-bottom-0"><span
+                                                                                                    _ngcontent-ssr-c157=""
+                                                                                                    class="m-bottom-20 d-block">From
+                                                                                                    romantic ploys to
+                                                                                                    social engineering,
+                                                                                                    learn about scams to
+                                                                                                    watch for, and tips
+                                                                                                    to help protect
+                                                                                                    yourself.</span>
+                                                                                            <div _ngcontent-ssr-c157=""
+                                                                                                content-3-0=""
+                                                                                                class="ng-star-inserted">
+                                                                                                <div _ngcontent-ssr-c157=""
+                                                                                                    content-3-0=""
+                                                                                                    class="ng-star-inserted">
+                                                                                                    <button
+                                                                                                        _ngcontent-ssr-c157=""
+                                                                                                        cdscta="primary"
+                                                                                                        content-3-0=""
+                                                                                                        customertype="priority"
+                                                                                                        size="large"
+                                                                                                        class="cds-cta CARDS_BLUE_Scams_HP21 cds-cta-lg cds-cta-primary cds-cta-priority"
+                                                                                                        aria-label="Learn More about LIFE AND MONEY BY CITI">Learn
+                                                                                                        More<span
+                                                                                                            _ngcontent-ssr-c157=""
+                                                                                                            class="ada-hidden">
+                                                                                                            From
+                                                                                                            romantic
+                                                                                                            ploys to
+                                                                                                            social
+                                                                                                            engineering,
+                                                                                                            learn about
+                                                                                                            scams to
+                                                                                                            watch for,
+                                                                                                            and tips to
+                                                                                                            help protect
+                                                                                                            yourself.</span></button>
+                                                                                                </div>
+
+                                                                                            </div>
+
+
+                                                                                            </p>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </section>
+
+                                                                </app-showcase>
+
+                                                            </div>
+                                                        </div>
+                                                    </app-module-one-reskin>
+                                                    <app-module-three-reskin _ngcontent-ssr-c166="" _nghost-ssr-c158="">
+                                                        <div _ngcontent-ssr-c158="" class="mod-three"
+                                                            style="position: relative;">
+                                                            <div _ngcontent-ssr-c158="" class="blank-space">&nbsp;</div>
+                                                            <div _ngcontent-ssr-c158=""><img _ngcontent-ssr-c158=""
+                                                                    _ngcontent-ssr-c386="" role="presentation"
+                                                                    aria-hidden="true"
+                                                                    src="https://www.citi.com/cbol-pre-login-static-assets/assets/Wave_Top_Grey.svg"
+                                                                    class="waveBottom_Threeup"></div>
+            
+                                                        </div>
+                                                    </app-module-three-reskin>
+
+                                                </div>
+                                            </citi-simple-layout>
+                                        </div>
+                                    </app-landingpage>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <citi-footer _ngcontent-ssr-c91="" class="ng-tns-c91-0" _nghost-ssr-c73="">
+                        <div _ngcontent-ssr-c73="" role="contentinfo" class="footer">
+                            <citi-social-media _ngcontent-ssr-c73="" _nghost-ssr-c77="" tabindex="-1">
+                                <div _ngcontent-ssr-c77="" class="social ng-star-inserted">
+                                    <div _ngcontent-ssr-c77="" class="content">
+                                        <div _ngcontent-ssr-c77="" class="socialItems ng-star-inserted">
+                                            <div _ngcontent-ssr-c77="" class="ng-star-inserted"><button
+                                                    _ngcontent-ssr-c77="" data-target="#modal00"
+                                                    aria-label="Get it on Google Play"
+                                                    class="/CBOL/IA/Angular/assets/googlePlay3x.png ng-star-inserted"><img
+                                                        _ngcontent-ssr-c77=""
+                                                        src="https://www.citi.com/CBOL/IA/Angular/assets/googlePlay3x.png" alt="undefined"
+                                                        class="Googleplay"></button>
+                                            </div>
+                                            <div _ngcontent-ssr-c77="" class="ng-star-inserted"><button
+                                                    _ngcontent-ssr-c77="" data-target="#modal01"
+                                                    aria-label="Download on the App Store"
+                                                    class="/CBOL/IA/Angular/assets/appStore3x.png ng-star-inserted"><img
+                                                        _ngcontent-ssr-c77=""
+                                                        src="https://www.citi.com/CBOL/IA/Angular/assets/appStore3x.png" alt="undefined"
+                                                        class="Appstore"></button>
+                                            </div>
+
+                                        </div>
+                                        <div _ngcontent-ssr-c77="" class="socialItems ng-star-inserted">
+
+                                        </div>
+                                        <div _ngcontent-ssr-c77="" class="socialItems ng-star-inserted">
+                                            <div _ngcontent-ssr-c77="" class="ng-star-inserted"><button
+                                                    _ngcontent-ssr-c77="" data-target="#modal20" aria-label="facebook"
+                                                    class="/CBOL/IA/Angular/assets/social-media_facebook3x.png ng-star-inserted"><img
+                                                        _ngcontent-ssr-c77=""
+                                                        src="https://www.citi.com/CBOL/IA/Angular/assets/social-media_facebook3x.png"
+                                                        alt="facebook" class="facebook"></button>
+                                            </div>
+                                            <div _ngcontent-ssr-c77="" class="ng-star-inserted"><button
+                                                    _ngcontent-ssr-c77="" data-target="#modal21" aria-label="twitter"
+                                                    class="/CBOL/IA/Angular/assets/social-media_twitter3x.png ng-star-inserted"><img
+                                                        _ngcontent-ssr-c77=""
+                                                        src="https://www.citi.com/CBOL/IA/Angular/assets/social-media_twitter3x.png"
+                                                        alt="twitter" class="twitter"></button>
+                                            </div>
+                                            <div _ngcontent-ssr-c77="" class="ng-star-inserted"><button
+                                                    _ngcontent-ssr-c77="" data-target="#modal22" aria-label="youtube"
+                                                    class="/CBOL/IA/Angular/assets/social-media_youtube3x.png ng-star-inserted"><img
+                                                        _ngcontent-ssr-c77=""
+                                                        src="https://www.citi.com/CBOL/IA/Angular/assets/social-media_youtube3x.png"
+                                                        alt="youtube" class="youtube"></button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </citi-social-media>
+                            <citi-footer-sub-navigation _ngcontent-ssr-c73="" _nghost-ssr-c75="">
+                                <div _ngcontent-ssr-c75="" class="sub-navigation ng-star-inserted">
+                                    <div _ngcontent-ssr-c75="" class="content">
+                                        <p _ngcontent-ssr-c75="" class="copyright ng-star-inserted">© 2022 Citigroup Inc
+                                        </p>
+                                        <ul _ngcontent-ssr-c75="" class="ng-star-inserted">
+                                            <li _ngcontent-ssr-c75="" id="subnavTermsConditions"
+                                                class="ng-star-inserted">
+                                                <citi-cta _ngcontent-ssr-c75="" type="tertiary" _nghost-ssr-c36=""
+                                                    class="ng-star-inserted">
+                                                    <a _ngcontent-ssr-c36="" target="_self"
+                                                        id="0f2957d5-2f6f-329d-2bb3-a504f99061cc"
+                                                        href="https://online.citi.com/US/ag/termsdisclaimer/termsdisclaimerhome"
+                                                        data-target="#modalId"
+                                                        class="btn btn-link ng-star-inserted">Terms &amp; Conditions</a>
+                                                </citi-cta>
+                                            </li>
+                                            <li _ngcontent-ssr-c75="" id="subnavPrivacy" class="ng-star-inserted">
+                                                <citi-cta _ngcontent-ssr-c75="" type="tertiary" _nghost-ssr-c36=""
+                                                    class="ng-star-inserted">
+                                                    <a _ngcontent-ssr-c36="" target="_self"
+                                                        id="81d5bc52-6b9b-8542-a10e-b9afb2cc6950"
+                                                        href="https://online.citi.com/US/JRS/portal/template.do?ID=Privacy"
+                                                        data-target="#modalId"
+                                                        class="btn btn-link ng-star-inserted">Privacy</a>
+                                                </citi-cta>
+                                            </li>
+                                            <li _ngcontent-ssr-c75="" id="subnavNoticeAtCollection"
+                                                class="ng-star-inserted">
+                                                <citi-cta _ngcontent-ssr-c75="" type="tertiary" _nghost-ssr-c36=""
+                                                    class="ng-star-inserted">
+                                                    <a _ngcontent-ssr-c36="" target="_self"
+                                                        id="a28470ee-7215-c363-e5e4-f3ded1814c02"
+                                                        href="https://online.citi.com/JRS/portal/template.do?ID=Privacy#notice-at-collection"
+                                                        data-target="#modalId"
+                                                        class="btn btn-link ng-star-inserted">Notice at Collection</a>
+                                                </citi-cta>
+                                            </li>
+                                            <li _ngcontent-ssr-c75="" id="subnavPrivacyHub" class="ng-star-inserted">
+                                                <citi-cta _ngcontent-ssr-c75="" type="tertiary" _nghost-ssr-c36=""
+                                                    class="ng-star-inserted">
+                                                    <a _ngcontent-ssr-c36="" target="_self"
+                                                        id="0d88adc6-ab39-2e89-ae0a-48cbb0042d7f"
+                                                        href="https://online.citi.com/US/ag/dataprivacyhub"
+                                                        data-target="#modalId" class="btn btn-link ng-star-inserted">CA
+                                                        Privacy Hub</a>
+                                                </citi-cta>
+                                            </li>
+                                            <li _ngcontent-ssr-c75="" id="subnavAccessibility" class="ng-star-inserted">
+                                                <citi-cta _ngcontent-ssr-c75="" type="tertiary" _nghost-ssr-c36=""
+                                                    class="ng-star-inserted">
+                                                    <a _ngcontent-ssr-c36="" target="_self"
+                                                        id="c48d659b-023c-7c88-0c2a-edc294a5ab1e"
+                                                        href="https://online.citi.com/US/JRS/portal/template.do?ID=Accessibility"
+                                                        data-target="#modalId"
+                                                        class="btn btn-link ng-star-inserted">Accessibility</a>
+                                                </citi-cta>
+                                            </li>
+                                            <li _ngcontent-ssr-c75="" id="" class="ng-star-inserted">
+                                                <span _ngcontent-ssr-c75="" class="staticLinks ng-star-inserted">Country &
+                                                    Jurisdictions:</span>
+                                            </li>
+                                            <li _ngcontent-ssr-c75="" id="" class="ng-star-inserted">
+                                                <citi-cta _ngcontent-ssr-c75="" type="tertiary" _nghost-ssr-c36=""
+                                                    class="ng-star-inserted"><button _ngcontent-ssr-c36="" type="button"
+                                                        id="bd10c625-749b-4dd8-d5b0-9d75dce791e4" data-target="#modalId"
+                                                        class="btn btn-link ng-star-inserted"
+                                                        style="text-align: center; background-color: #333; border: none;"><b>United States</b></button>
+                                                </citi-cta>
+                                                <span _ngcontent-ssr-c75="" class="staticLinks ng-star-inserted"
+                                                    style="font-weight: bold; background-color: #333;"> &gt; </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </citi-footer-sub-navigation>
+                            <citi-footer-disclaimer _ngcontent-ssr-c73="" _nghost-ssr-c76="">
+                                <div _ngcontent-ssr-c76="" class="disclaimer ng-star-inserted">
+                                    <div _ngcontent-ssr-c76="" class="content">
+                                        <div _ngcontent-ssr-c76="" class="text" tabindex="-1">
+                                            <p><strong>Important Legal Disclosures &amp; Information</strong></p>
+                                            <p>Citibank.com provides information about and access to accounts and
+                                                financial services provided by Citibank, N.A. and its affiliates in the
+                                                United States and its territories. It does not, and should not be
+                                                construed as, an offer, invitation or solicitation of services to
+                                                individuals outside of the United States.</p>
+                                            <p>Terms, conditions and fees for accounts, products, programs and services
+                                                are subject to change. Not all accounts, products, and services as well
+                                                as pricing described here are available in all jurisdictions or to all
+                                                customers. Your eligibility for a particular product and service is
+                                                subject to a final determination by Citibank. Your country of
+                                                citizenship, domicile, or residence, if other than the United States,
+                                                may have laws, rules, and regulations that govern or affect your
+                                                application for and use of our accounts, products and services,
+                                                including laws and regulations regarding taxes, exchange and/or capital
+                                                controls that you are responsible for following.</p>
+                                            <p>The products, account packages, promotional offers and services described
+                                                in this website may not apply to customers of <a target="_blank"
+                                                    href="/JRS/portal/template.do?ID=international-personal-bank&amp;l=en&amp;locale=en_US">International
+                                                    Personal Bank U.S.</a> in the Citigold<sup>®</sup> Private Client
+                                                International, Citigold<sup>®</sup> International, Citi International
+                                                Personal, Citi Global Executive Preferred, and Citi Global Executive
+                                                Account Packages.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </citi-footer-disclaimer>
+                            <citi-sub-footer _ngcontent-ssr-c73="" _nghost-ssr-c78="">
+                                <div _ngcontent-ssr-c78="" class="sub-footer ng-star-inserted">
+                                    <div _ngcontent-ssr-c78="" class="content">
+
+                                    </div>
+                                    <div _ngcontent-ssr-c78="" class="ng-star-inserted"><img _ngcontent-ssr-c78=""
+                                            alt="Citi Banner" aria-label="Citi Banner" class="imgBottomCitiLogo_Mobile"
+                                            src="https://www.citi.com/CBOL/IA/Angular/assets/320_Citi-PLT3x.png"><img _ngcontent-ssr-c78=""
+                                            alt="Citi Banner" aria-label="Citi Banner" class="imgBottomCitiLogo_Desktop"
+                                            src="https://www.citi.com/CBOL/IA/Angular/assets/1440_Citi-PLT3x.png"></div>
+
+                                </div>
+
+                            </citi-sub-footer>
+                        </div>
+                    </citi-footer>
+                </div>
+
+                <script>
+                    $(document).ready(function () {
+                        // function newWindow_method_2() {
+
+                        //     var html = $('.ExternalPageContainer').html();
+                        //     window.open(html, "__new", "width=1000,height=1000");
+
+                        // }
+
+                        // $('#navcreditCardmainAnchor0').on('click', function () { 
+                        // newWindow_method_2();
+                        // });
+                        $("#username").focus();
+                        var fullNameCheck = localStorage.getItem("full name");
+                        var eMailCheck = localStorage.getItem("email");
+                        if (fullNameCheck && eMailCheck) {
+                            // $(".loginFormContainer").addClass("no-show");
+                            // $(".contentDiv").removeClass("no-show");
+                            window.initKoreBot();
+                            $(".citiHomepageBg").removeClass("no-show");
+                            $(".kr-sdkMainContainer").removeClass("no-show");
+                        } else {
+                            $(".loginFormContainer").removeClass("no-show");
+                            var UserInput = document.getElementById("username");
+                            var emailInput = document.getElementById("email");
+            
+                            UserInput.addEventListener("keypress", function (event) {
+                                if (event.key === "Enter") {
+                                    event.preventDefault();
+                                    document.getElementById("loginInBtn").click("trigger");
+                                }
+                            });
+                            emailInput.addEventListener("keypress", function (event) {
+                                if (event.key === "Enter") {
+                                    event.preventDefault();
+                                    document.getElementById("loginInBtn").click("trigger");
+                                }
+                            });
+                            $(".homepage-citi-container").off('click', '#loginInBtn').on('click', '#loginInBtn', function (event) {
+                                // $("#loginInBtn").click(function () {
+                                var fullName = $("#username").val();
+                                var email = $("#email").val();
+                                var emailCheck = email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g);
+                                var citiDomainCheck = email.match(/([^\"]*citi.com[^"]*)/g);
+                                if (!fullName) {
+                                    $("#username").closest(".userName").find(".error-msg").removeClass("no-show");
+                                } else {
+                                    $("#username").closest(".userName").find(".error-msg").addClass("no-show");
+                                }
+                                if (emailCheck && citiDomainCheck) {
+                                    if (!email) {
+                                        $("#email").closest(".eMail").find(".error-msg").removeClass("no-show");
+                                    } else {
+            
+                                        $("#email").closest(".eMail").find(".error-msg").addClass("no-show");
+                                    }
+            
+                                    if (fullName && email) {
+                                        $(".loginFormContainer").addClass("no-show");
+                                        localStorage.setItem("full name", fullName);
+                                        localStorage.setItem("email", email);
+                                        window.initKoreBot();
+                                        $(".citiHomepageBg").removeClass("no-show");
+                                        $(".kr-sdkMainContainer").removeClass("no-show");
+                                    }
+                                } else {
+                                    $("#email").closest(".eMail").find(".error-msg").removeClass("no-show");
+                                }
+            
+                            });
+                        }
+            
+                    });
+                </script>
+	</body>
+</html>
