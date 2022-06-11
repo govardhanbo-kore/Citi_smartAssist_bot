@@ -1091,39 +1091,39 @@
                         _chatContainer.find('.chatInputBoxPlaceholder').css('display', 'block');
                         _chatContainer.find('.sendButton').addClass('disabled');
                     }
-                    if (event.keyCode !== 13 && event.which <= 90 && event.which >= 48 || event.which >= 96 && event.which <= 105) {
-                        var isAgentConnectedFlag = localStorage.getItem("agentConnected");
-                        if(isAgentConnectedFlag && isAgentConnectedFlag === "true"){
-                            console.log("User started typing");
-                            clearTimeout(stopTyping);
-                            var messageToBot = {};
-                            messageToBot["clientMessageId"] = new Date().getTime();
-                            messageToBot["event"] = "typing";
-                            messageToBot["message"] ={
-                                "body": "",
-                                "type": ""
-                              }
-                            messageToBot["resourceid"] = "/bot.message";
-                            bot.sendMessage(messageToBot, function messageSent(err) {
-                            });
-                            userTypingStarted = true;
-                        }
-                        if(userTypingStarted){
-                            var stopTyping = setTimeout(()=>{
-                                console.log("User stopped typing");
-                                var messageToBot = {};
-                                messageToBot["clientMessageId"] = new Date().getTime();
-                                messageToBot["event"] = "stop_typing";
-                                messageToBot["message"] ={
-                                    "body": "",
-                                    "type": ""
-                                  }
-                                messageToBot["resourceid"] = "/bot.message";
-                                bot.sendMessage(messageToBot, function messageSent(err) {
-                                });
-                            },2000);
-                        }
-                    }
+                    // if (event.keyCode !== 13 && event.which <= 90 && event.which >= 48 || event.which >= 96 && event.which <= 105) {
+                    //     var isAgentConnectedFlag = localStorage.getItem("agentConnected");
+                    //     if(isAgentConnectedFlag && isAgentConnectedFlag === "true"){
+                    //         console.log("User started typing");
+                    //         clearTimeout(stopTyping);
+                    //         var messageToBot = {};
+                    //         messageToBot["clientMessageId"] = new Date().getTime();
+                    //         messageToBot["event"] = "typing";
+                    //         messageToBot["message"] ={
+                    //             "body": "",
+                    //             "type": ""
+                    //           }
+                    //         messageToBot["resourceid"] = "/bot.message";
+                    //         bot.sendMessage(messageToBot, function messageSent(err) {
+                    //         });
+                    //         userTypingStarted = true;
+                    //     }
+                    //     // if(userTypingStarted){
+                    //     //     var stopTyping = setTimeout(()=>{
+                    //     //         console.log("User stopped typing");
+                    //     //         var messageToBot = {};
+                    //     //         messageToBot["clientMessageId"] = new Date().getTime();
+                    //     //         messageToBot["event"] = "stop_typing";
+                    //     //         messageToBot["message"] ={
+                    //     //             "body": "",
+                    //     //             "type": ""
+                    //     //           }
+                    //     //         messageToBot["resourceid"] = "/bot.message";
+                    //     //         bot.sendMessage(messageToBot, function messageSent(err) {
+                    //     //         });
+                    //     //     },2000);
+                    //     // }
+                    // }
                 });
                 _chatContainer.on('click', '.chatInputBoxPlaceholder', function (event) {
                     _chatContainer.find('.chatInputBox').trigger('click');
@@ -1133,9 +1133,59 @@
                     prevComposeSelection = window.getSelection();
                     prevRange = prevComposeSelection.rangeCount > 0 && prevComposeSelection.getRangeAt(0);
                 });
+                // _chatContainer.on('focus', '.chatInputBox', function (event) {
+                //         var isAgentConnectedFlag = localStorage.getItem("agentConnected");
+                //         if(isAgentConnectedFlag && isAgentConnectedFlag === "true"){
+                //             console.log("User started typing");
+                //             clearTimeout(stopTyping);
+                //             var messageToBot = {};
+                //             messageToBot["clientMessageId"] = new Date().getTime();
+                //             messageToBot["event"] = "typing";
+                //             messageToBot["message"] ={
+                //                 "body": "",
+                //                 "type": ""
+                //               }
+                //             messageToBot["resourceid"] = "/bot.message";
+                //             bot.sendMessage(messageToBot, function messageSent(err) {
+                //             });
+                //             userTypingStarted = true;
+                //         }
+                // });
+                // $(".chatInputBox").focus(()=>{
+                //     var isAgentConnectedFlag = localStorage.getItem("agentConnected");
+                //     if(isAgentConnectedFlag && isAgentConnectedFlag === "true"){
+                //         console.log("User started typing");
+                //         clearTimeout(stopTyping);
+                //         var messageToBot = {};
+                //         messageToBot["clientMessageId"] = new Date().getTime();
+                //         messageToBot["event"] = "typing";
+                //         messageToBot["message"] ={
+                //             "body": "",
+                //             "type": ""
+                //           }
+                //         messageToBot["resourceid"] = "/bot.message";
+                //         bot.sendMessage(messageToBot, function messageSent(err) {
+                //         });
+                //         userTypingStarted = true;
+                //     }
+                // })
                 _chatContainer.on('blur', '.chatInputBox', function (event) {
                     _escPressed = 0;
-                });
+                    //  if(userTypingStarted){
+                    //     console.log("User stopped typing");
+                    //     var messageToBot = {};
+                    //     messageToBot["clientMessageId"] = new Date().getTime();
+                    //     messageToBot["event"] = "stop_typing";
+                    //     messageToBot["message"] ={
+                    //         "body": "",
+                    //         "type": ""
+                    //       }
+                    //     messageToBot["resourceid"] = "/bot.message";
+                    //     bot.sendMessage(messageToBot, function messageSent(err) {
+                    //     });
+    
+                    //  }
+                    });
                 _chatContainer.off('click', '.botResponseAttachments').on('click', '.botResponseAttachments', function (event) {
                     window.open($(this).attr('fileid'), '_blank');
                 });
