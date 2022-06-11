@@ -21,6 +21,7 @@ function AgentDesktop(uuId, aResponse) {
         this.authResponse = aResponse;
         autoStartCobrowse();
     }
+
     var _self = this; 
     this.phone = new AudioCodesUA();
     this.activeCall = null;
@@ -682,6 +683,14 @@ function AgentDesktop(uuId, aResponse) {
         console.log("page title ", title);
         return title;
     }
+    // localStorage.removeItem("pagesVisited");
+    var pagesVisitedArray = [];
+    var pageTitle = this.getPageTitle();
+    pagesVisitedArray.push({
+        page : pageTitle,
+        timestamp : new moment()
+    });
+    localStorage.setItem("pagesVisited", JSON.stringify(pagesVisitedArray))
     this.addAudioVideoContainer = function() {
         var koreChatBody = document.getElementsByClassName("kore-chat-body");
         var agentcontainer = document.getElementById("agentcontainer");
