@@ -5,8 +5,9 @@
   var botOptions = {};
   botOptions.logLevel = 'debug';
   // botOptions.koreAPIUrl = "";
-  botOptions.koreAPIUrl = "https://bots.kore.ai/api/";
+  // botOptions.koreAPIUrl = "https://bots.kore.ai/api/";
   // botOptions.koreAPIUrl = "https://uat.kore.ai/api/";
+  botOptions.koreAPIUrl = "https://uat-demo.kore.ai/api/";
   
   botOptions.koreSpeechAPIUrl = "";//deprecated
   //botOptions.bearer = "bearer xyz-------------------";
@@ -49,15 +50,20 @@
     // botOptions.clientId = "cs-70f4e462-0a40-5848-8851-8315154d86ff";
     // botOptions.clientSecret = "oe55to2PqlHworbbjxfmhzrvfOQxGzq8ZI3Omx4YeNM=";
 
-    // UAT Credentials
-    botOptions.botInfo = { name: "Citi Assist", "_id": "st-7bedd6e0-14e4-53c4-b69d-fc507d9aaa4d",customData: {fullName: fullName}}; // bot name is case sensitive
-    botOptions.clientId = "cs-8fbf6cbf-4aeb-5ee0-8186-51080c6cc58d";
-    botOptions.clientSecret = "JhYAAnEiV/DzXT4Vyt5PWsJWfMfsdmDZO9bXKmPlhC8=";
+    // // UAT Credentials
+    // botOptions.botInfo = { name: "Citi Assist", "_id": "st-7bedd6e0-14e4-53c4-b69d-fc507d9aaa4d",customData: {fullName: fullName}}; // bot name is case sensitive
+    // botOptions.clientId = "cs-8fbf6cbf-4aeb-5ee0-8186-51080c6cc58d";
+    // botOptions.clientSecret = "JhYAAnEiV/DzXT4Vyt5PWsJWfMfsdmDZO9bXKmPlhC8=";
 
       //  // UAT Credentials
       //  botOptions.botInfo = { name: "March15UatFlow", "_id": "st-a6f93cc5-3576-50de-ac14-e5a8e8f7097f",customData: {fullName: fullName}}; // bot name is case sensitive
       //  botOptions.clientId = "cs-fef779bf-5cd1-52fd-9f15-de573fa1d994";
       //  botOptions.clientSecret = "sgI6eswaAzDH0voFk+rPTuhSoURUdQWKOkjJS+ZkkOg=";
+
+                  //  // UAT Credentials
+                  botOptions.botInfo = { name: "March15UatFlow", "_id": "st-0038a388-4c05-5d63-a3b7-262cb10054b5",customData: {fullName: fullName}}; // bot name is case sensitive
+                  botOptions.clientId = "cs-c32e318b-d4e7-5dd8-a5dc-2b71bfb2ac10";
+                  botOptions.clientSecret = "ZQrhoEuztpTo6Krt0Se70ZCpMlvcB94PsreXaXx7Uj8=";
 
     botOptions.accountId = "626249d944f401c70f06c6f1"
     botOptions.brandingAPIUrl = botOptions.koreAPIUrl +'websdkthemes/'+  botOptions.botInfo._id+'/activetheme';

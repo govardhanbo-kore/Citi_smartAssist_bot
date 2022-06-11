@@ -71,9 +71,10 @@ module.exports = function (grunt) {
         //Below js and css set of files will be used to minify chatwindow sdk  
         jsFiles=[
             'libs/kore-no-conflict-start.js',
-            'libs/jquery.js',
+            // 'libs/jquery.js',
             'libs/jquery.tmpl.min.js',
             'libs/jquery-ui.min.js',
+            'libs/moment.js',
             '../libs/lodash.min.js',
             '../libs/d3.v4.min.js',
             '../libs/KoreGraphAdapter.js',
@@ -89,12 +90,15 @@ module.exports = function (grunt) {
             '../agentdesktop.js',
             'chatWindow.js',
             'custom/customTemplate.js',
+            'libs/jquery.daterangepicker.js',
+            'libs/jquery-clockpicker.js',
             '../libs/ie11CustomProperties.js',
             '../libs/recorder.js',
             '../libs/recorderWorker.js',
             '../libs/speech/app.js',
             '../libs/speech/key.js',
             '../libs/client_api.js',
+            '../libs/kore-pickers.js',
             'kore-config.js',
             'kore-main.js',
             'libs/kore-no-conflict-end.js'
@@ -106,9 +110,12 @@ module.exports = function (grunt) {
             '../libs/prefect-scrollbar.css',
             'chatWindow.css',
             'custom/customTemplate.css',
+            '../libs/kore-pickers.css',
             // 'fonts/inter.css',
             // 'libs/fonts/style.css',
             'agentdesktop.css',
+            'libs/jquery-clockpicker.css',
+            'libs/daterangepicker.css'
             // 'index.css'
         ]
     }

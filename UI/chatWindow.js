@@ -2123,18 +2123,6 @@
                             'helpers': helpers,
                             'extension': extension
                         });
-                        setTimeout(()=>{
-                            var messageToBot = {};
-                            messageToBot["clientMessageId"] = new Date().getTime();
-                            messageToBot["event"] = "message_read";
-                            messageToBot["message"] ={
-                                "body": "",
-                                "type": ""
-                              }
-                            messageToBot["resourceid"] = "/bot.message";
-                            bot.sendMessage(messageToBot, function messageSent(err) {
-                            });
-                        },10000);
                     }
                     else if (msgData.message[0] && msgData.message[0].component && msgData.message[0].component.payload && msgData.message[0].component.payload.template_type == "quick_replies") {
                         messageHtml = $(me.getChatTemplate("templatequickreply")).tmpl({
