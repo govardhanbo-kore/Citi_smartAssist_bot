@@ -2675,12 +2675,15 @@
                         }, 7000);
                     }
                     else {
-                        if(msgData && msgData.message && msgData.message[0] && msgData.message[0].cInfo && msgData.message[0].cInfo.body !== "" ){
-                            messageHtml = $(me.getChatTemplate("message")).tmpl({
-                                'msgData': msgData,
-                                'helpers': helpers,
-                                'extension': extension
-                            });
+                        if(msgData && msgData.message && msgData.message[0] && msgData.message[0].cInfo && msgData.message[0].cInfo.body !== ""){
+                            if((msgData && msgData.message && msgData.message[0] && msgData.message[0].cInfo && msgData.message[0].cInfo.body) || (msgData && msgData.message && msgData.message[0] && msgData.message[0].component && msgData.message[0].component.payload && Object.keys(msgData.message[0].component.payload).length !== 0)){
+                                messageHtml = $(me.getChatTemplate("message")).tmpl({
+                                    'msgData': msgData,
+                                    'helpers': helpers,
+                                    'extension': extension
+                                });
+                            }
+
                         }
 
                     }

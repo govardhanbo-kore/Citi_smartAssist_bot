@@ -1367,12 +1367,14 @@ function KoreRTMClient(token, opts) {
     this._reconnecting=true;
     clientOpts.forceReconnecting=false;
   }
-  // console.log(  "location.href======1>",  location.href);
+
   var webSiteLocation = location.href;
-  if(webSiteLocation && (webSiteLocation.indexOf('External_Page_1.html') >= 0 || webSiteLocation.indexOf('External_Page_1.html') >= 0 || webSiteLocation.indexOf('index.html') >= 0)){
+  if(webSiteLocation && webSiteLocation.indexOf('External_Page_1.html') >= 0 || webSiteLocation.indexOf('External_Page_2.html') >= 0 || webSiteLocation.indexOf('index.html') >= 0){
     this._reconnecting=true;
-    clientOpts.forceReconnecting=false;
+      clientOpts.forceReconnecting=false;
+      console.log(  "location.href======1>", webSiteLocation);
   }
+  console.log(  "location.href======outside>", webSiteLocation);
   if (clientOpts.hasOwnProperty("_reconnecting") && clientOpts._reconnecting) {
     this._reconnecting = clientOpts._reconnecting;
     clientOpts._reconnecting=false;
