@@ -61,7 +61,7 @@
       //  botOptions.clientSecret = "sgI6eswaAzDH0voFk+rPTuhSoURUdQWKOkjJS+ZkkOg=";
 
                   //  // UAT Credentials
-                  botOptions.botInfo = { name: "March15UatFlow", "_id": "st-0038a388-4c05-5d63-a3b7-262cb10054b5",customData: {fullName: fullName}}; // bot name is case sensitive
+                  botOptions.botInfo = { name: "Citi Assist", "_id": "st-0038a388-4c05-5d63-a3b7-262cb10054b5",customData: {fullName: fullName}}; // bot name is case sensitive
                   botOptions.clientId = "cs-c32e318b-d4e7-5dd8-a5dc-2b71bfb2ac10";
                   botOptions.clientSecret = "ZQrhoEuztpTo6Krt0Se70ZCpMlvcB94PsreXaXx7Uj8=";
 
