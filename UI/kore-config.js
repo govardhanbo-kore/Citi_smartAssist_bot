@@ -22,9 +22,54 @@
   //     hostname: 'HOSTNAME_TO_BE_REWRITTEN',
   //     port: 'PORT_TO_BE_REWRITTEN'
   // };
-  var fullName = localStorage.getItem("full name");
-  var eMail = localStorage.getItem("email");
-  
+  // var fullName = localStorage.getItem("full name");
+  // var eMail = localStorage.getItem("email");
+  var fullNameCheck = localStorage.getItem("user_name");
+  var passwordCheck = localStorage.getItem("password");
+  var eMailCheck = localStorage.getItem("eMail_check");
+
+  function getPageTitle() {
+    var title = document.title;
+    var metaTags = document.getElementsByTagName("meta");
+    if (metaTags && metaTags.length > 0) {
+        for (var i = 0; i < metaTags.length; i++) {
+            if (metaTags[i].name === 'title' || metaTags[i].name === 'og:title') {
+                title = metaTags[i].content;
+            } 
+        }
+    }
+    console.log("page title ", title);
+    return title;
+}
+
+var pageTitle = getPageTitle();
+var pagesVisited = localStorage.getItem("pagesVisited");
+var pagesVisitedArray = [];
+if (!pagesVisited || pagesVisited == '[]') {
+    pagesVisitedArray = [];
+} else {
+    pagesVisitedArray = JSON.parse(pagesVisited);
+    // calculate time spent on last item
+    var obj = pagesVisitedArray[0];
+    var start = moment(obj.timestamp);
+    console.log("start", start);
+    var end = moment();
+    console.log("end ", end);
+    var duration = moment.duration(end.diff(start));
+    var seconds = duration.asSeconds();
+    obj['timespent'] = seconds;
+    console.log("spent seconds ", seconds);
+}
+pagesVisitedArray.push({
+    page : pageTitle,
+    timestamp : new moment()
+});
+
+pagesVisitedArray.reverse();
+pagesVisitedArray = JSON.stringify(pagesVisitedArray)
+localStorage.setItem("pagesVisited", pagesVisitedArray);
+
+
 
   // if(chatConfig.isFromFinastra){
   //   botOptions.JWTUrl = "https://staging-bankassist.korebots.com/finastra-wrapper/token";
@@ -44,7 +89,7 @@
     // botOptions.brandingAPIUrl = botOptions.koreAPIUrl + '/workbench/sdkData?objectId=hamburgermenu&objectId=brandingwidgetdesktop';
    
     botOptions.JWTUrl = "https://mk2r2rmj21.execute-api.us-east-1.amazonaws.com/dev/users/sts";
-    botOptions.userIdentity = eMail ? eMail : new Date().getTime();// Provide users email id here
+    botOptions.userIdentity = eMailCheck ? eMailCheck : new Date().getTime();// Provide users email id here
 
     // DEV Credentials
     // botOptions.botInfo = { name: "Mia", "_id": "st-fcf862ad-389d-513b-9a1d-a5119e5ff53a",customData:{"rtmType":"web"}}; // bot name is case sensitive
@@ -62,7 +107,7 @@
       //  botOptions.clientSecret = "sgI6eswaAzDH0voFk+rPTuhSoURUdQWKOkjJS+ZkkOg=";
 
                   //  // UAT Credentials
-                  botOptions.botInfo = { name: "Citi Assist", "_id": "st-0038a388-4c05-5d63-a3b7-262cb10054b5",customData: {fullName: fullName}}; // bot name is case sensitive
+                  botOptions.botInfo = { name: "Citi Assist", "_id": "st-0038a388-4c05-5d63-a3b7-262cb10054b5",customData: {"pagesVisitedArray" : pagesVisitedArray, username: fullNameCheck, "password":passwordCheck}}; // bot name is case sensitive
                   botOptions.clientId = "cs-c32e318b-d4e7-5dd8-a5dc-2b71bfb2ac10";
                   botOptions.clientSecret = "ZQrhoEuztpTo6Krt0Se70ZCpMlvcB94PsreXaXx7Uj8=";
 

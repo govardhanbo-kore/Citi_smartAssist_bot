@@ -87,7 +87,7 @@
             };
 
 
-            var isAgentConnected = false;
+            // var isAgentConnected = false;
             var typingTimer;
             var TypingCount = 0;
             var doneTypingInterval = 3000;  //time in ms, 5 second for example
