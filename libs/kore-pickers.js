@@ -541,6 +541,9 @@ KorePickers.prototype.showDatePicker = function (mainConfig) {
     }
     this.addSlider();
     _korePickers.find(".kore-action-sheet").append(this.getdatePickerContainer);
+    $('.chat-container').animate({
+        scrollTop: $('.chat-container').height()
+        }, 10);
     this.addDateIconToFooter();
     var defaultlibConfig = {
         alwaysOpen: true,
@@ -624,6 +627,9 @@ KorePickers.prototype.addClickEventCalender = function (mainConfig) {
         "display": "none"
     });
     _self.bottomSlider('show', _korePickers.find(".datePickerContainer"));
+    $('.chat-container').animate({
+        scrollTop: $('.chat-container').height()
+        }, 10);
     setTimeout(function () {
         _korePickers.find(".kore-action-sheet .datePickerContainer  .confirmBTN").css({
             "display": "block"
