@@ -18,7 +18,46 @@
     }
 
     $(document).ready(function () {
+        
+        function getPageTitle() {
+            var title = document.title;
+            var metaTags = document.getElementsByTagName("meta");
+            if (metaTags && metaTags.length > 0) {
+                for (var i = 0; i < metaTags.length; i++) {
+                    if (metaTags[i].name === 'title' || metaTags[i].name === 'og:title') {
+                        title = metaTags[i].content;
+                    } 
+                }
+            }
+            console.log("page title ", title);
+            return title;
+        }
 
+        var pageTitle = getPageTitle();
+        var pagesVisited = localStorage.getItem("pagesVisited");
+        var pagesVisitedArray = [];
+        if (!pagesVisited || pagesVisited == '[]') {
+            pagesVisitedArray = [];
+        } else {
+            pagesVisitedArray = JSON.parse(pagesVisited);
+            // calculate time spent on last item
+            var obj = pagesVisitedArray[0];
+            var start = moment(obj.timestamp);
+            console.log("start", start);
+            var end = moment();
+            console.log("end ", end);
+            var duration = moment.duration(end.diff(start));
+            var seconds = duration.asSeconds();
+            obj['timespent'] = seconds;
+            console.log("spent seconds ", seconds);
+        }
+        pagesVisitedArray.push({
+            page : pageTitle,
+            timestamp : new moment()
+        })
+        pagesVisitedArray.reverse();
+        localStorage.setItem("pagesVisited", JSON.stringify(pagesVisitedArray));
+        
         function koreGenerateUUID() {
             console.info("generating UUID");
             var d = new Date().getTime();
