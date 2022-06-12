@@ -754,7 +754,7 @@
 }
 
 .kore-chat-window ul.chat-container li.fromOtherUsers .extra-info {
-    padding-left: 59px;
+    /* padding-left: 59px; */
     padding-right: 0;
     text-align: left;
     /* display: none; */

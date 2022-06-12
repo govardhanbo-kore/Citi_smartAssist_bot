@@ -1087,36 +1087,6 @@
                         containment: "document",
                         minWidth: 400
                     });
-                    // _chatContainer.off('keypress', '.chatInputBox').on('keypress', '.chatInputBox', function (event) {
-                    //     console.log("key press");
-                    // });
-                  
-
-
-
-
-
-
-
-
-
-
-
-
-                
-                // //on keyup, start the countdown
-                // $input.on('keyup', function () {
-                //   clearTimeout(typingTimer);
-                //   typingTimer = setTimeout(doneTyping, doneTypingInterval);
-                // });
-                
-                //on keydown, clear the countdown 
-                // $input.on('keydown', function () {
-                //   clearTimeout(typingTimer);
-                // });
-                
-
-
 
                 _chatContainer.off('keyup', '.chatInputBox').on('keyup', '.chatInputBox', function (event) {
                     var _footerContainer = $(me.config.container).find('.kore-chat-footer');
@@ -1130,10 +1100,8 @@
                         _chatContainer.find('.sendButton').removeClass('disabled');
                         if (event.keyCode !== 13 && event.which <= 90 && event.which >= 48 || event.which >= 96 && event.which <= 105) {
                             var isAgentConnectedFlag = localStorage.getItem("agentConnected");
-                            // isAgentConnectedFlag = "true";
-                            console.log("innertext=====1",TypingCount);
                             if(TypingCount == 0 && isAgentConnectedFlag === "true"){
-                                console.log("User started typing");
+                                // console.log("User started typing");
                                 var messageToBot = {};
                                 messageToBot["clientMessageId"] = new Date().getTime();
                                 messageToBot["event"] = "typing";
@@ -1163,7 +1131,7 @@
 
                 //user is "finished typing," do something
                 function doneTyping () {
-                    console.log("User stopped typing");
+                    // console.log("User stopped typing");
                     var messageToBot = {};
                     messageToBot["clientMessageId"] = new Date().getTime();
                     messageToBot["event"] = "stop_typing";
@@ -1177,23 +1145,6 @@
                     TypingCount = 0;
                   }
 
-
-
-                        // if(userTypingStarted){
-                        //     var stopTyping = setTimeout(()=>{
-                        //         console.log("User stopped typing");
-                        //         var messageToBot = {};
-                        //         messageToBot["clientMessageId"] = new Date().getTime();
-                        //         messageToBot["event"] = "stop_typing";
-                        //         messageToBot["message"] ={
-                        //             "body": "",
-                        //             "type": ""
-                        //           }
-                        //         messageToBot["resourceid"] = "/bot.message";
-                        //         bot.sendMessage(messageToBot, function messageSent(err) {
-                        //         });
-                        //     },2000);
-                        // }
                 _chatContainer.on('click', '.chatInputBoxPlaceholder', function (event) {
                     _chatContainer.find('.chatInputBox').trigger('click');
                     _chatContainer.find('.chatInputBox').trigger('focus');
@@ -2231,6 +2182,18 @@
                             'helpers': helpers,
                             'extension': extension
                         });
+                        setTimeout(()=>{
+                            var messageToBot = {};
+                            messageToBot["clientMessageId"] = new Date().getTime();
+                            messageToBot["event"] = "message_read";
+                            messageToBot["message"] ={
+                                "body": "",
+                                "type": ""
+                              }
+                            messageToBot["resourceid"] = "/bot.message";
+                            bot.sendMessage(messageToBot, function messageSent(err) {
+                            });
+                        },2000);
                     }
                     else if (msgData.message[0] && msgData.message[0].component && msgData.message[0].component.payload && msgData.message[0].component.payload.template_type == "quick_replies") {
                         messageHtml = $(me.getChatTemplate("templatequickreply")).tmpl({

@@ -1283,28 +1283,28 @@
                 </div>
 
                 <script>
-                    KoreSDK.dependencies.jQuery(document).ready(function () {
+                    $(document).ready(function () {
                         // function newWindow_method_2() {
 
-                        //     var html = KoreSDK.dependencies.jQuery('.ExternalPageContainer').html();
+                        //     var html = $('.ExternalPageContainer').html();
                         //     window.open(html, "__new", "width=1000,height=1000");
 
                         // }
 
-                        // KoreSDK.dependencies.jQuery('#navcreditCardmainAnchor0').on('click', function () { 
+                        // $('#navcreditCardmainAnchor0').on('click', function () { 
                         // newWindow_method_2();
                         // });
-                        KoreSDK.dependencies.jQuery("#username").focus();
+                        $("#username").focus();
                         var fullNameCheck = localStorage.getItem("full name");
                         var eMailCheck = localStorage.getItem("email");
                         if (fullNameCheck && eMailCheck) {
-                            // KoreSDK.dependencies.jQuery(".loginFormContainer").addClass("no-show");
-                            // KoreSDK.dependencies.jQuery(".contentDiv").removeClass("no-show");
+                            // $(".loginFormContainer").addClass("no-show");
+                            // $(".contentDiv").removeClass("no-show");
                             window.initKoreBot();
-                            KoreSDK.dependencies.jQuery(".citiHomepageBg").removeClass("no-show");
-                            KoreSDK.dependencies.jQuery(".kr-sdkMainContainer").removeClass("no-show");
+                            $(".citiHomepageBg").removeClass("no-show");
+                            $(".kr-sdkMainContainer").removeClass("no-show");
                         } else {
-                            KoreSDK.dependencies.jQuery(".loginFormContainer").removeClass("no-show");
+                            $(".loginFormContainer").removeClass("no-show");
                             var UserInput = document.getElementById("username");
                             var emailInput = document.getElementById("email");
             
@@ -1320,35 +1320,35 @@
                                     document.getElementById("loginInBtn").click("trigger");
                                 }
                             });
-                            KoreSDK.dependencies.jQuery(".homepage-citi-container").off('click', '#loginInBtn').on('click', '#loginInBtn', function (event) {
-                                // KoreSDK.dependencies.jQuery("#loginInBtn").click(function () {
-                                var fullName = KoreSDK.dependencies.jQuery("#username").val();
-                                var email = KoreSDK.dependencies.jQuery("#email").val();
+                            $(".homepage-citi-container").off('click', '#loginInBtn').on('click', '#loginInBtn', function (event) {
+                                // $("#loginInBtn").click(function () {
+                                var fullName = $("#username").val();
+                                var email = $("#email").val();
                                 var emailCheck = email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g);
                                 var citiDomainCheck = email.match(/([^\"]*citi.com[^"]*)/g);
                                 if (!fullName) {
-                                    KoreSDK.dependencies.jQuery("#username").closest(".userName").find(".error-msg").removeClass("no-show");
+                                    $("#username").closest(".userName").find(".error-msg").removeClass("no-show");
                                 } else {
-                                    KoreSDK.dependencies.jQuery("#username").closest(".userName").find(".error-msg").addClass("no-show");
+                                    $("#username").closest(".userName").find(".error-msg").addClass("no-show");
                                 }
                                 if (emailCheck && citiDomainCheck) {
                                     if (!email) {
-                                        KoreSDK.dependencies.jQuery("#email").closest(".eMail").find(".error-msg").removeClass("no-show");
+                                        $("#email").closest(".eMail").find(".error-msg").removeClass("no-show");
                                     } else {
             
-                                        KoreSDK.dependencies.jQuery("#email").closest(".eMail").find(".error-msg").addClass("no-show");
+                                        $("#email").closest(".eMail").find(".error-msg").addClass("no-show");
                                     }
             
                                     if (fullName && email) {
-                                        KoreSDK.dependencies.jQuery(".loginFormContainer").addClass("no-show");
+                                        $(".loginFormContainer").addClass("no-show");
                                         localStorage.setItem("full name", fullName);
                                         localStorage.setItem("email", email);
                                         window.initKoreBot();
-                                        KoreSDK.dependencies.jQuery(".citiHomepageBg").removeClass("no-show");
-                                        KoreSDK.dependencies.jQuery(".kr-sdkMainContainer").removeClass("no-show");
+                                        $(".citiHomepageBg").removeClass("no-show");
+                                        $(".kr-sdkMainContainer").removeClass("no-show");
                                     }
                                 } else {
-                                    KoreSDK.dependencies.jQuery("#email").closest(".eMail").find(".error-msg").removeClass("no-show");
+                                    $("#email").closest(".eMail").find(".error-msg").removeClass("no-show");
                                 }
             
                             });
