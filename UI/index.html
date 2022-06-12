@@ -507,8 +507,7 @@
                                                 class="en_US showEnglishBg" style="background-color: rgb(0, 45, 114);">
                                                 <button _ngcontent-ssr-c36="" type="button" id="personetics-citi-menu"
                                                     class="btn btn-link ng-star-inserted"
-                                                    style="text-align: center; outline: none;">How can we
-                                                    help?</button>
+                                                    style="text-align: center; outline: none;">Return to account page</button>
                                                 <!---->
                                                 <!---->
                                                 <!---->
@@ -1304,8 +1303,8 @@
             var eMail_check;
             var ArrayVal = [
                 { "username": "John", "password": "1111", "email": "john@gmail.com" },
-                { "username": "Diane", "password": "1110", "email": "mindy@gmail.com" },
-                { "username": "Mindy", "password": "1112", "email": "john@gmail.com" },
+                { "username": "Diane", "password": "1110", "email": "diane@gmail.com" },
+                { "username": "Mindy", "password": "1112", "email": "mindy@gmail.com" },
                 { "username": "George", "password": "1115", "email": "gerorge@yahoo.com" },
                 { "username": "Fred", "password": "1116", "email": "fred@yahoo.com" },
                 { "username": "Yann", "password": "1113", "email": "yann@gmail.com" },
@@ -1332,6 +1331,11 @@
                 // console.log("eMail_check",eMail_check)
                 $(".citi-dropbtn").attr({"user":user_name,"password":passWord,"email":eMail_check,});
                 $(".citi-dropbtn").text(user_name);
+            });
+           
+            $(".citiHomepageBg").off('click', '.personetics-citi-menu').on('click', '.personetics-citi-menu', function (event) {
+                localStorage.clear();
+                window.location.reload();
             });
 
             $("#username").focus();
