@@ -23,9 +23,13 @@
 			});
 			if(msgData.message[0].component.payload.text.indexOf("connected") > -1){
 				localStorage.setItem("agentConnected", true);
+				$(".close-chat-btn").css('display', 'inline-block');
+				$('.kore-chat-window').addClass('agent-on-chat');
 			}else{
 				localStorage.setItem("agentConnected", false);
 				KoreSDK.chatConfig.agentImage = '';
+				$(".close-chat-btn").css('display', 'none');
+				$('.kore-chat-window').removeClass('agent-on-chat');
 			}
 			
 		}else if (msgData.message[0] && msgData.message[0].component && msgData.message[0].component.payload && msgData.message[0].component.payload.template_type == "dropdown_template") {

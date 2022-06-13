@@ -12,91 +12,6 @@
     <link rel="stylesheet" href="../UI/libs/fonts/style.css">
     <link href="fonts/inter.css" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
-    <!-- Start-->
-
-    <!-- <link href="fonts/inter.css" rel="stylesheet">	
-    <script src="libs/jquery.js" type="text/javascript"></script>
-    <script src="libs/jquery.tmpl.min.js" type="text/javascript"></script>
-    <script src="libs/jquery-ui.min.js" type="text/javascript"></script>
-    <link href="libs/jquery-ui.min.css" rel="stylesheet"></link>
-    <script src="libs/moment.js" type="text/javascript"></script>
-    <script src="../libs/ie11CustomProperties.js"></script>
-    <script src="../libs/lodash.min.js"></script>
-    <script src="../libs/d3.v4.min.js"></script>
-    <script src="../libs/KoreGraphAdapter.js" type="text/javascript"></script>
-    <script src='../libs/anonymousassertion.js'></script>
-    <script src="../kore-bot-sdk-client.js"></script>
-    <script src="../libs/perfect-scrollbar.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="../UI/libs/fonts/style.css"> -->
-
-<!-- End-->
-
-<!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
-<!-- Start-->
-
-<!-- <link rel="stylesheet" href="index.css">
-<link href="agentdesktop.css" rel="stylesheet"></link> -->
-<!-- End-->
-
-<!-- <link src="test.html"></script> -->
-    <!-- Uncomment these lines for amazon polly -->
-    <!-- <script src="../plugins/aws-sdk-2.668.0.min.js"></script>
-    <script src="../plugins/kore-aws-polly.js" type="text/javascript"></script> -->
-
-
-    <!-- Uncomment these lines for AgentDestop plugin -->
-    <!-- <link href="../plugins/agentdestop/agentdesktop.css" rel="stylesheet"></link>
-    <script src="../plugins/agentdestop/libs/ac_webrtc.min.js"></script>
-    <script src="../plugins/agentdestop/libs/audio_player.js"></script>
-    <script src="../plugins/agentdestop/config.js"></script>
-    <script src="../plugins/agentdestop/libs/c2c.js"></script>
-    <script src="../plugins/agentdestop/agentdesktop.js" ></script> -->
-
-    <!-- Start-->
-
-    <!-- <script src="../libs/ac_webrtc.min.js"></script>
-    <script src="../libs/audio_player.js"></script>
-    <script src="../libs/config.js"></script>
-    <script src="../libs/c2c.js"></script>
-    <script src="../agentdesktop.js" ></script>
-
-    
-    <script src="chatWindow.js" type="text/javascript"></script>
-    <script src="libs/jquery.daterangepicker.js" type="text/javascript"></script>
-    <link href="libs/daterangepicker.css" rel="stylesheet"></link>
-    <script src="libs/jquery-clockpicker.js" type="text/javascript"></script>
-    <link href="libs/jquery-clockpicker.css" rel="stylesheet"></link>
-    <link href="../libs/kore-pickers.css" rel="stylesheet"></link>
-    <script src="../libs/kore-pickers.js" type="text/javascript"></script>
-    <script src="../libs/emoji.js" type="text/javascript"></script>
-    <script src="../libs/recorder.js" type="text/javascript"></script>
-    <script src="../libs/recorderWorker.js" type="text/javascript"></script>
-    <link href="chatWindow.css" rel="stylesheet"></link>
-    <link href="../libs/emojione.sprites.css" rel="stylesheet"></link>
-    <link href="../libs/purejscarousel.css" rel="stylesheet"></link>
-    <script src="../libs/purejscarousel.js" type="text/javascript"></script>
-    <script src="custom/customTemplate.js" type="text/javascript"></script>
-    <link href="../libs/prefect-scrollbar.css" rel="stylesheet"></link>
-    <link href="custom/customTemplate.css" rel="stylesheet"></link> -->
-
-<!-- ENd-->
-
-    <!-- <script type="text/javascript" src="libs/loader.js"></script>  -->
-    
-    <!-- Uncomment these lines for Google Speech. -->
-    <!-- <script type="text/javascript" src="../libs/speech/app.js"></script>
-    <script type="text/javascript" src="../libs/speech/key.js"></script>
-    <script type="text/javascript" src="https://apis.google.com/js/client.js"></script> -->
-    
-    <!-- Start-->
-    <!-- <script src="kore-config.js" type="text/javascript"></script> -->
-    <!-- ENd-->
-    <!-- <script src="kore-118n-config.js" type="text/javascript"></script> --> <!-- Uncomment for i18n support -->
-    <!-- Start-->
-    <!-- <script src="kore-main.js" type="text/javascript"></script>	
-    <script src="libs/kore-no-conflict-end.js" type="text/javascript"></script> -->
-    <!-- ENd-->
     <script>
     window.initKoreBot = function () {
         addScript('dist/kore-ai-sdk.min.js');
@@ -115,9 +30,258 @@
         document.body.appendChild(s);
     }
 </script>
+<style>
+    .loginFormContainer {
+        /* margin-top: 20px;
+            margin-bottom: 20px;
+            padding-left: 0;
+            padding-right: 0;
+            min-width: 384px; */
+        font-family: "Interstate Regular Comp", sans-serif;
+    }
+
+    .homepage-citi-container #logInForm {
+        border: 1px solid #dcdcdc;
+        border-radius: 16px;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        max-width: 40%;
+        transform: translate(-49%, -49%);
+        background-color: #fff;
+        box-shadow: 1px 1px 5px 0.05px hsl(0deg 0% 41% / 54%);
+    }
+
+    .homepage-citi-container .citi-signon2 {
+        background-color: #fff;
+    }
+
+    .homepage-citi-container .citi-signon2 {
+        display: block;
+        padding: 2px 16px 16px;
+        font-family: "Interstate Regular Comp", sans-serif;
+        border: 1px solid #dcdcdc;
+    }
+
+    .homepage-citi-container .citi-signon2 {
+        border-radius: 16px;
+        text-align: center;
+        border: none;
+    }
+
+    .loginFormContainer .loginHeader {
+        width: 100%;
+        text-align: center;
+    }
+
+    .homepage-citi-container .citi-signon2 .input-field-title {
+        display: inline-block;
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: 18px;
+        font-weight: 500;
+    }
+
+    .homepage-citi-container .citi-form-field-infix {
+        display: inline-block;
+    }
+
+    .homepage-citi-container .citi-input {
+        border-color: #bbb;
+        background: #fff;
+        color: #056dae;
+    }
+
+    .homepage-citi-container .citi-input {
+        padding: 0.6875rem 1rem;
+        border: 1px solid #bbb;
+        background: #fdfdfd;
+        font-size: 16px;
+        line-height: 1.5;
+        border-radius: 0.5rem;
+        font-weight: 400;
+        font-family: "Interstate Bold Cond";
+        height: calc(0.5em + 1.375rem + 2px);
+        outline: none;
+        width: 100%;
+    }
+
+    .homepage-citi-container .citi-input:focus {
+        border-color: #056dae;
+        background: #eff3f8;
+    }
+
+    .homepage-citi-container .sign-user,
+    .homepage-citi-container .sign-email {
+        padding-bottom: 15px;
+    }
+
+    .homepage-citi-container .citi-button-primary:hover {
+        background-color: #034c81;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .homepage-citi-container .citi-button-primary {
+        background-color: #056dae;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        padding: 10px 57px;
+    }
+
+    .homepage-citi-container .citi-signon2 .citi-signon-cta {
+        margin-top: 15px;
+        font-weight: 700;
+        padding: 15px 50px;
+        font-size: 12px;
+        border-radius: 8px;
+    }
+
+    .homepage-citi-container .sign-email label {
+        margin-right: 9px;
+    }
+
+    .no-show {
+        display: none;
+    }
+
+    .error-msg {
+        font-size: 12px;
+        margin-top: 2px !important;
+        color: #ff001f;
+        line-height: 1.17;
+        position: absolute;
+        margin-bottom: 10px !important;
+    }
+
+
+    .citi-dropbtn {
+        border: 1px solid #056dae;
+        color: #056dae;
+        padding: 8px 24px;
+        background-color: #ffffff;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .citi-dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .citi-dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 50px;
+        box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+        z-index: 1;
+        max-height: 215px;
+        overflow-y: scroll;
+    }
+
+    .citi-dropdown-content div {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .citi-dropdown-content div:hover {
+        background-color: #056dae;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    .citi-dropdown:hover .citi-dropdown-content {
+        display: block;
+    }
+
+    .citi-dropdown:hover .citi-dropbtn {
+        background-color: #056dae;
+        color: #ffffff;
+    }
+</style>
 </head>
 
 <body>
+    <video id="local_video" autoplay="autoplay" playsinline style="width:0px;height:0px"></video>
+    <video id="remote_video" autoplay="autoplay" playsinline style="width:0px;height:0px"></video>
+
+    <!-- Login page for citi -->
+
+    <div class="loginFormContainer no-show">
+        <div class="homepage-citi-container">
+
+            <div id="logInForm">
+                <div class="loginHeader">
+                    <img _ngcontent-ssr-c71="" src="https://www.citi.com/CBOL/IA/Angular/assets/citilogoredesign.png"
+                        alt="Citi">
+                </div>
+                <div class="citi-signon2">
+                    <div class="row">
+                        <!-- <div class="sign-user">
+								<div class="username">
+									<div class="citi-form-field">
+										<label citilabel="" class="citi-label input-field-title" for="username">Full
+											Name</label>
+										<div
+											class="citi-form-field-infix citi-form-field-content citi-form-field-input userName">
+											<input autocomplete="off" id="username" citiinput="" type="text"
+												formcontrolname="username" class="citi-input" placeholder="Enter Full Name">
+											<div class="error-msg no-show">Please enter your Full Name</div>
+										</div>
+									</div>
+	
+	
+								</div>
+							</div>
+							<div class="sign-email">
+								<div class="email">
+									<div email="" class="citi-form-field">
+										<label citilabel="" class="citi-label input-field-title" for="email">E-Mail
+											Id</label>
+										<div
+											class="citi-form-field-infix citi-form-field-content citi-form-field-input eMail">
+											<input autocomplete="off" id="email" citiinput="" type="email"
+												formcontrolname="email" class="citi-input" placeholder="Enter E-Mail">
+											<div class="error-msg no-show">Please enter an Email ID of citi.com</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
+                        <div class="sign-email">
+                            <div class="email">
+                                <div email="" class="citi-form-field">
+                                    <label citilabel="" class="citi-label input-field-title" for="email">Please select a
+                                        banking customer profile</label>
+                                    <div
+                                        class="citi-form-field-infix citi-form-field-content citi-form-field-input eMail">
+                                        <div class="citi-dropdown">
+                                            <button class="citi-dropbtn">select</button>
+                                            <div class="citi-dropdown-content">
+                                            </div>
+                                        </div>
+                                        <div class="error-msg no-show">Please Select user</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="citi-button-primary" id="loginInBtn">Connect</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login page End Here-->
+
     <!-- ================== citi webSite background code ================== -->
     <div class="citiHomepageBg no-show">
         <div _ngcontent-ssr-c168="" _nghost-ssr-c91="" class="ng-tns-c91-0">
@@ -1037,9 +1201,77 @@
             </div>
         </citi-footer>
     </div>
+
     <script>
-      
-       window.initKoreBot();
+        $(document).ready(function () {
+            var user_name;
+            var passWord;
+            var eMail_check;
+            var ArrayVal = [
+                // { "username": "John", "password": "1111", "email": "john1@gmail.com" },
+                { "username": "Diane", "password": "1110", "email": "diane1@gmail.com" },
+                { "username": "Mindy", "password": "1112", "email": "mindy1@gmail.com" },
+                { "username": "George", "password": "1115", "email": "gerorge1@yahoo.com" },
+                { "username": "Fred", "password": "1116", "email": "fred1@yahoo.com" },
+                { "username": "Yann", "password": "1113", "email": "yann1@gmail.com" },
+                { "username": "Charbel", "password": "1114", "email": "charbel1@gmail.com" },
+                { "username": "Roberto", "password": "1117", "email": "roberto1@test.com" },
+                { "username": "Will", "password": "1118", "email": "will1@test.com" },
+                { "username": "Sally", "password": "1119", "email": "sally1@gmail.com" },
+                { "username": "Kim", "password": "1120", "email": "kim1@gmail.com" },
+                // { "username": "Madhu", "password": "4444", "email": "abc1@gmail.com" },
+                // { "username": "Emy", "password": "6666", "email": "emy1@yahoo.com" },
+                // { "username": "Sara", "password": "2222", "email": "test1@test.com"}
+            ];
+
+            for (var i = 0; i < ArrayVal.length; i++) {
+                $(".citi-dropdown-content")
+                $('<div class="city-inner" user="'+ArrayVal[i].username+'" password="'+ArrayVal[i].password+'" email="'+ArrayVal[i].email+'" >' + ArrayVal[i].username + '</div>').appendTo('.citi-dropdown-content');
+            }
+            $(".homepage-citi-container").off('click', '.citi-dropdown-content .city-inner').on('click', '.citi-dropdown-content .city-inner', function (event) {
+               user_name =  $(this).attr("user");
+               passWord =  $(this).attr("password");
+                eMail_check = $(this).attr("email");
+                $(".citi-dropbtn").attr({"user":user_name,"password":passWord,"email":eMail_check,});
+                $(".citi-dropbtn").text(user_name);
+            });
+           
+            $(".citiHomepageBg").off('click', '#personetics-citi-menu').on('click', '#personetics-citi-menu', function (event) {
+                localStorage.clear();
+                window.location.reload();
+            });
+
+            $("#username").focus();
+            var fullNameCheck = localStorage.getItem("user_name");
+            var passwordCheck = localStorage.getItem("password");
+            var eMailCheck = localStorage.getItem("eMail_check");
+            if (fullNameCheck && passwordCheck && eMailCheck) {
+                window.initKoreBot();
+                $(".citiHomepageBg").removeClass("no-show");
+                $(".kr-sdkMainContainer").removeClass("no-show");
+            } else {
+                $(".loginFormContainer").removeClass("no-show");
+                $(".homepage-citi-container").off('click', '#loginInBtn').on('click', '#loginInBtn', function (event) {
+
+                    if (user_name && passWord && eMail_check) {
+                     
+                            $(".loginFormContainer").addClass("no-show");
+                            localStorage.setItem("user_name", user_name);
+                            localStorage.setItem("password", passWord);
+                            localStorage.setItem("eMail_check", eMail_check);
+                            window.initKoreBot();
+                            $(".citiHomepageBg").removeClass("no-show");
+                            $(".kr-sdkMainContainer").removeClass("no-show");
+                        
+                    } 
+                    else {
+                        $("#logInForm").closest(".sign-email").find(".error-msg").removeClass("no-show");
+                    }
+
+                });
+            }
+
+        });
     </script>
 </body>
 

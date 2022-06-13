@@ -1302,22 +1302,22 @@
             var passWord;
             var eMail_check;
             var ArrayVal = [
-                { "username": "John", "password": "1111", "email": "john@gmail.com" },
-                { "username": "Diane", "password": "1110", "email": "diane@gmail.com" },
-                { "username": "Mindy", "password": "1112", "email": "mindy@gmail.com" },
-                { "username": "George", "password": "1115", "email": "gerorge@yahoo.com" },
-                { "username": "Fred", "password": "1116", "email": "fred@yahoo.com" },
-                { "username": "Yann", "password": "1113", "email": "yann@gmail.com" },
-                { "username": "Charbel", "password": "1114", "email": "charbel@gmail.com" },
-                { "username": "Roberto", "password": "1117", "email": "roberto@test.com" },
-                { "username": "Will", "password": "1118", "email": "will@test.com" },
-                { "username": "Sally", "password": "1119", "email": "sally@gmail.com" },
-                { "username": "Kim", "password": "1120", "email": "kim@gmail.com" },
-                { "username": "Madhu", "password": "4444", "email": "abc@gmail.com" },
-                { "username": "Emy", "password": "6666", "email": "emy@yahoo.com" },
-                { "username": "Sara", "password": "2222", "email": "test@test.com"}
+                // { "username": "John", "password": "1111", "email": "john1@gmail.com" },
+                { "username": "Diane", "password": "1110", "email": "diane1@gmail.com" },
+                { "username": "Mindy", "password": "1112", "email": "mindy1@gmail.com" },
+                { "username": "George", "password": "1115", "email": "gerorge1@yahoo.com" },
+                { "username": "Fred", "password": "1116", "email": "fred1@yahoo.com" },
+                { "username": "Yann", "password": "1113", "email": "yann1@gmail.com" },
+                { "username": "Charbel", "password": "1114", "email": "charbel1@gmail.com" },
+                { "username": "Roberto", "password": "1117", "email": "roberto1@test.com" },
+                { "username": "Will", "password": "1118", "email": "will1@test.com" },
+                { "username": "Sally", "password": "1119", "email": "sally1@gmail.com" },
+                { "username": "Kim", "password": "1120", "email": "kim1@gmail.com" },
+                // { "username": "Madhu", "password": "4444", "email": "abc1@gmail.com" },
+                // { "username": "Emy", "password": "6666", "email": "emy1@yahoo.com" },
+                // { "username": "Sara", "password": "2222", "email": "test1@test.com"}
             ];
-            ;
+            
             for (var i = 0; i < ArrayVal.length; i++) {
                 $(".citi-dropdown-content")
                 $('<div class="city-inner" user="'+ArrayVal[i].username+'" password="'+ArrayVal[i].password+'" email="'+ArrayVal[i].email+'" >' + ArrayVal[i].username + '</div>').appendTo('.citi-dropdown-content');
@@ -1333,7 +1333,7 @@
                 $(".citi-dropbtn").text(user_name);
             });
            
-            $(".citiHomepageBg").off('click', '.personetics-citi-menu').on('click', '.personetics-citi-menu', function (event) {
+            $(".citiHomepageBg").off('click', '#personetics-citi-menu').on('click', '#personetics-citi-menu', function (event) {
                 localStorage.clear();
                 window.location.reload();
             });

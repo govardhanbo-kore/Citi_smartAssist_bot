@@ -393,7 +393,7 @@
                                 hyperLinksMap[_randomKey] = _link;
                                 _link = _randomKey;
                             }
-                            return "<span class='isLink'><a id='linkEvent'" + _target + " href=\"" + _link + "\">" + match + "</a></span>";
+                            return "<span class='isLink'><a id='linkEvent'" + _target + " href=\"" + _link + "\">click Here</a></span>";
                         } else {
                             return match;
                         }
@@ -1645,7 +1645,19 @@
                         scrollTop: $('.chat-container').prop("scrollHeight")
                     }, 100);
                 });
-
+                _chatContainer.off('click', '.close-chat-btn').on('click', '.close-chat-btn', function (event) {
+                    console.log('clicked chat-close-btn');
+                    var messageToBot = {};
+                    messageToBot["clientMessageId"] = new Date().getTime();
+                    messageToBot["event"] = "close_agent_chat";
+                    messageToBot["message"] ={
+                        "body": "",
+                        "type": ""
+                      }
+                    messageToBot["resourceid"] = "/bot.message";
+                    bot.sendMessage(messageToBot, function messageSent(err) {
+                    });
+                });
                 _chatContainer.off('click', '.reload-btn').on('click', '.reload-btn', function (event) {
                     $(this).addClass("disabled").prop('disabled', true);
                     $(".close-btn").addClass("disabled").prop('disabled', true);
@@ -2182,18 +2194,25 @@
                             'helpers': helpers,
                             'extension': extension
                         });
-                        setTimeout(()=>{
-                            var messageToBot = {};
-                            messageToBot["clientMessageId"] = new Date().getTime();
-                            messageToBot["event"] = "message_read";
-                            messageToBot["message"] ={
-                                "body": "",
-                                "type": ""
-                              }
-                            messageToBot["resourceid"] = "/bot.message";
-                            bot.sendMessage(messageToBot, function messageSent(err) {
-                            });
-                        },2000);
+                        $(".close-chat-btn").css('display', 'inline-block');
+                        $('.kore-chat-window').addClass('agent-on-chat');
+                        
+                        if(!(msgData.fromHistory) && (msgData.message[0].cInfo.body.indexOf("Please rate your interaction with us") <= -1 || msgData.message[0].component.payload.text.indexOf("Please rate your interaction with us") <= -1)){
+                            // if(!(msgData.fromHistory)) {    
+                        // setTimeout(()=>{
+                                var messageToBot = {};
+                                messageToBot["clientMessageId"] = new Date().getTime();
+                                messageToBot["event"] = "message_read";
+                                messageToBot["message"] ={
+                                    "body": "",
+                                    "type": ""
+                                }
+                                messageToBot["resourceid"] = "/bot.message";
+                                bot.sendMessage(messageToBot, function messageSent(err) {
+                                });
+                            // },2000);
+                        }
+
                     }
                     else if (msgData.message[0] && msgData.message[0].component && msgData.message[0].component.payload && msgData.message[0].component.payload.template_type == "quick_replies") {
                         messageHtml = $(me.getChatTemplate("templatequickreply")).tmpl({
@@ -2748,6 +2767,8 @@
                     else {
                         if(msgData && msgData.message && msgData.message[0] && msgData.message[0].cInfo && msgData.message[0].cInfo.body !== ""){
                             if((msgData && msgData.message && msgData.message[0] && msgData.message[0].cInfo && msgData.message[0].cInfo.body) || (msgData && msgData.message && msgData.message[0] && msgData.message[0].component && msgData.message[0].component.payload && Object.keys(msgData.message[0].component.payload).length !== 0)){
+                                $(".close-chat-btn").css('display', 'none');
+                                $('.kore-chat-window').removeClass('agent-on-chat');
                                 messageHtml = $(me.getChatTemplate("message")).tmpl({
                                     'msgData': msgData,
                                     'helpers': helpers,
@@ -2759,6 +2780,22 @@
 
                     }
                 }
+                if (msgData.type === "bot_response"){
+                    if(msgData.message && msgData.message[0] && msgData.message[0].cInfo && msgData.message[0].cInfo.body && msgData.message[0].cInfo.body.includes("Please provide a valid message")){
+                        return;
+                    }
+                }
+                                    //For Agent presence
+                                    // if (msgData.type === "bot_response") {
+                                    //     if (msgData.message[0] && msgData.message[0].component && msgData.message[0].component.payload && msgData.message[0].component.payload.template_type == "live_agent") {
+                                    //         $(".close-chat-btn").css('display', 'inline-block');
+                                    //         $('.kore-chat-window').addClass('agent-on-chat');
+                                    //     } else {
+                                    //         $(".close-chat-btn").css('display', 'none');
+                                    //         $('.kore-chat-window').removeClass('agent-on-chat');
+                                    //     }
+                
+                                    // }
                 _chatContainer.find('li').attr('aria-live', 'off');
                 _chatContainer.find('li').attr('aria-hidden', 'true');//for mac voiceover bug with aria-live
 
@@ -2972,7 +3009,10 @@
                                 <button class="minimize-btn" title="Minimize"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTRweCIgaGVpZ2h0PSIycHgiIHZpZXdCb3g9IjAgMCAxNCAyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCA1Mi4zICg2NzI5NykgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+bWluaW1pemU8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iQXJ0Ym9hcmQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zMjYuMDAwMDAwLCAtMjMzLjAwMDAwMCkiIGZpbGw9IiM4QTk1OUYiPgogICAgICAgICAgICA8ZyBpZD0ibWluaW1pemUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMyNi4wMDAwMDAsIDIzMy4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJQYXRoIiBwb2ludHM9IjAgMCAxMy45Mzk5OTk2IDAgMTMuOTM5OTk5NiAxLjk5OTk5OTk0IDAgMS45OTk5OTk5NCI+PC9wb2x5Z29uPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4="></button> \
                                 <button class="expand-btn hide" title="Expand"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTRweCIgaGVpZ2h0PSIxNHB4IiB2aWV3Qm94PSIwIDAgMTQgMTQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUyLjMgKDY3Mjk3KSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5leHBhbmQ8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iQXJ0Ym9hcmQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zMDUuMDAwMDAwLCAtMjUyLjAwMDAwMCkiIGZpbGw9IiM4QTk1OUYiIGZpbGwtcnVsZT0ibm9uemVybyI+CiAgICAgICAgICAgIDxnIGlkPSJleHBhbmQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMwNS4wMDAwMDAsIDI1Mi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xLjg2NjY2NjY3LDkuMzMzMzMzMzMgTDAsOS4zMzMzMzMzMyBMMCwxNCBMNC42NjY2NjY2NywxNCBMNC42NjY2NjY2NywxMi4xMzMzMzMzIEwxLjg2NjY2NjY3LDEyLjEzMzMzMzMgTDEuODY2NjY2NjcsOS4zMzMzMzMzMyBaIE0wLDQuNjY2NjY2NjcgTDEuODY2NjY2NjcsNC42NjY2NjY2NyBMMS44NjY2NjY2NywxLjg2NjY2NjY3IEw0LjY2NjY2NjY3LDEuODY2NjY2NjcgTDQuNjY2NjY2NjcsMCBMMCwwIEwwLDQuNjY2NjY2NjcgWiBNMTIuMTMzMzMzMywxMi4xMzMzMzMzIEw5LjMzMzMzMzMzLDEyLjEzMzMzMzMgTDkuMzMzMzMzMzMsMTQgTDE0LDE0IEwxNCw5LjMzMzMzMzMzIEwxMi4xMzMzMzMzLDkuMzMzMzMzMzMgTDEyLjEzMzMzMzMsMTIuMTMzMzMzMyBaIE05LjMzMzMzMzMzLDAgTDkuMzMzMzMzMzMsMS44NjY2NjY2NyBMMTIuMTMzMzMzMywxLjg2NjY2NjY3IEwxMi4xMzMzMzMzLDQuNjY2NjY2NjcgTDE0LDQuNjY2NjY2NjcgTDE0LDAgTDkuMzMzMzMzMzMsMCBaIiBpZD0iU2hhcGUiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+"></button>\
                                 <button class="close-btn hide" title="Close"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTRweCIgaGVpZ2h0PSIxNHB4IiB2aWV3Qm94PSIwIDAgMTQgMTQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUyLjMgKDY3Mjk3KSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5jbG9zZTwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJBcnRib2FyZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTM0NC4wMDAwMDAsIC0yMjkuMDAwMDAwKSIgZmlsbD0iIzhBOTU5RiI+CiAgICAgICAgICAgIDxnIGlkPSJjbG9zZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzQ0LjAwMDAwMCwgMjI5LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlNoYXBlIiBwb2ludHM9IjE0IDEuNCAxMi42IDAgNyA1LjYgMS40IDAgMCAxLjQgNS42IDcgMCAxMi42IDEuNCAxNCA3IDguNCAxMi42IDE0IDE0IDEyLjYgOC40IDciPjwvcG9seWdvbj4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+"></button> \
-                            </div> \
+                                <button class="close-chat-btn" style="display: none;">\
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAAlwSFlzAABzfwAAc38BM4HQNgAABCRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIgogICAgICAgICAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICAgICAgICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyI+CiAgICAgICAgIDx0aWZmOlJlc29sdXRpb25Vbml0PjI8L3RpZmY6UmVzb2x1dGlvblVuaXQ+CiAgICAgICAgIDx0aWZmOkNvbXByZXNzaW9uPjU8L3RpZmY6Q29tcHJlc3Npb24+CiAgICAgICAgIDx0aWZmOlhSZXNvbHV0aW9uPjc1MTwvdGlmZjpYUmVzb2x1dGlvbj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHRpZmY6WVJlc29sdXRpb24+NzUxPC90aWZmOllSZXNvbHV0aW9uPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+MjQ8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpDb2xvclNwYWNlPjE8L2V4aWY6Q29sb3JTcGFjZT4KICAgICAgICAgPGV4aWY6UGl4ZWxZRGltZW5zaW9uPjI0PC9leGlmOlBpeGVsWURpbWVuc2lvbj4KICAgICAg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">\
+                                </button>\
+                                </div> \
                             <div class="sdkThemeContainer" title="Themes">\
                                 <i class="icon-More dropbtnWidgt sdkThemeIcon drpdown_theme"></i>\
                                 <ul class="dropdown-contentWidgt rmpmW themeContent" style="list-style:none;">\
@@ -3974,6 +4014,7 @@
                                         if (msgData.message[0].component && msgData.message[0].component.payload && (msgData.message[0].component.payload.videoUrl || msgData.message[0].component.payload.audioUrl)) {
                                             msgData.message[0].cInfo.body = "";
                                         }
+                                        msgData.fromHistory = true;
                                         me.renderMessage(msgData);
                                     } catch (e) {
                                         me.renderMessage(msgData);
