@@ -3006,9 +3006,9 @@
 
 
 .kore-chat-window .kore-chat-header .chat-box-controls .close-chat-btn {
-    margin-top: 0;
-    background-size: 16px 16px;
-    display: inline-block;
-    font-size: 18px;
-    background-repeat: no-repeat;
-    }
+margin-top: 0;
+background-size: 16px 16px;
+display: inline-block;
+font-size: 18px;
+background-repeat: no-repeat;
+}
