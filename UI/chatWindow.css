@@ -3012,3 +3012,11 @@ display: inline-block;
 font-size: 18px;
 background-repeat: no-repeat;
 }
+.kore-chat-window ul.chat-container li.fromCurrentUser .readIndicator,.kore-chat-window ul.chat-container li.fromCurrentUser .sentIndicator {
+    font-size: 10px;
+    position: relative;
+    text-align: right;
+    top: -2px;
+    right: 8px;
+    color: var(--sdk-chat-widow-secondary-font-color);
+}

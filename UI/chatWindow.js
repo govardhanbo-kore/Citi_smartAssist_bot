@@ -1749,6 +1749,10 @@
                                 $('.typingIndicatorContent').css('display', 'block');
                     }else if(tempData.from === "bot" && tempData.type === "events" && tempData.message.type === "stoptyping"){
                         $('.typingIndicatorContent').css('display', 'none');
+                    }else if (tempData.from === "bot" && tempData.type === "events" && tempData.message.type === "message_read") {
+                        // $(".sentIndicator").css("visibility","hidden");
+                        // $(".readIndicator").css("visibility","visible");
+                        $(".sentIndicator").text("Read");
                     }
                     else if (tempData.from === "bot" && tempData.type === "bot_response") {
                         if (tempData && tempData.message && tempData.message[0]) {
@@ -2091,6 +2095,8 @@
                     setTimeout(function () {
                         $('.typingIndicatorContent').css('display', 'none');
                     }, 10000);
+                }else{
+                    msgData.fromUserAgentCheck = true;
                 }
 
                 if (renderMsg && typeof renderMsg === 'string') {
@@ -2137,14 +2143,7 @@
                     _extractedFileName = msgData.message[0].component.payload.url.replace(/^.*[\\\/]/, '');
                 }
 
-                // function isValidJSONString1(str) {
-                //     try {
-                //         JSON.parse(str);
-                //     } catch (e) {
-                //         return true;
-                //     }
-                //     return false;
-                // }
+
 
                 /* checking for matched custom template */
                 messageHtml = customTemplateObj.renderMessage(msgData);
@@ -3080,6 +3079,7 @@
                                      class="{{if msgData.type === "bot_response"}}fromOtherUsers{{else}}fromCurrentUser{{/if}}\ {{if msgData.icon}}with-icon{{/if}}"> \
                                     {{if msgData.createdOn}}<div aria-hidden="true" aria-live="off" class="extra-info">${helpers.formatDate(msgData.createdOn)}</div>{{/if}} \
                                     {{if msgData.icon}}<div aria-hidden="true"  aria-live="off" class="profile-photo"> <div class="user-account avtar" style="{{if msgData.message[0] && msgData.message[0].component && msgData.message[0].component.payload && msgData.message[0].component.payload.template_type && msgData.message[0].component.payload.template_type == "live_agent" && msgData && msgData.author && msgData.author.profImage}}background-image:url(${msgData.author.profImage}){{else}}background-image:url(${msgData.icon}){{/if}}" title="User Avatar"></div> </div> {{/if}} \
+                                    {{if msgData.type !== "bot_response" && msgData.fromUserAgentCheck}}<div class="sentIndicator" style="visibility: visible;">sent</div>{{/if}} \
                                     <div class="messageBubble">\
                                         <div> \
                                             {{if msgData.type === "bot_response"}} \

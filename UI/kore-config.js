@@ -7,8 +7,8 @@
   // botOptions.koreAPIUrl = "";
   // botOptions.koreAPIUrl = "https://bots.kore.ai/api/";
   // botOptions.koreAPIUrl = "https://uat.kore.ai/api/";
-  // botOptions.koreAPIUrl = "https://uat-demo.kore.ai/api/";
-  botOptions.koreAPIUrl = "https://citi-demo.kore.ai/api/";
+  botOptions.koreAPIUrl = "https://uat-demo.kore.ai/api/";
+  // botOptions.koreAPIUrl = "https://citi-demo.kore.ai/api/";
   
   botOptions.koreSpeechAPIUrl = "";//deprecated
   //botOptions.bearer = "bearer xyz-------------------";

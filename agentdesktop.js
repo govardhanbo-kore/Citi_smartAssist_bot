@@ -585,11 +585,20 @@ function AgentDesktop(uuId, aResponse) {
             }
             return "desktop";
         };
+        var ip_address;
+        // $.getJSON('https://api.db-ip.com/v2/free/self', function(data) {
+        //     console.log(JSON.stringify(data, null, 2));
+        //     ip_address = data;
+        // });
+        KoreSDK.dependencies.jQuery.getJSON("https://api.ipify.org?format=json", function(data) {
+            ip_address = data.ip;
+        })
 
         message["agentDesktopMeta"] = {"pagesVisited" : pagesVisitedArray,"browserData":{
             "browser_name": KoreSDK.chatConfig.browserName,
             "os_name": KoreSDK.chatConfig.OSName,
-            "device_type": deviceType()
+            "device_name": deviceType(),
+            "ip_address": ip_address
         }};
         
         originalSendMessageFunction.call(this, message,  optCb);
